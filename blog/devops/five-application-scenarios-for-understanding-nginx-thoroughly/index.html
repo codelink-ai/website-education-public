@@ -1,29 +1,29 @@
 <!doctype html><html lang=en-us>
 <head>
 <meta charset=utf-8>
-<title>Explaining the 5 Python thread locks</title>
+<title>Five application scenarios for understanding Nginx thoroughly</title>
 <base href=https://codelink.ai>
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=5">
-<meta name=description content="In a program where multiple threads with shared data are executed in parallel, thread-safe code will ensure that each thread is executed properly and correctly through a synchronization mechanism, without data contamination or other unexpected situations.">
+<meta name=description content="We will share the five application scenarios for Nginx: HTTP server, static server, reverse proxy server, load balancer, and separation of static and dynamic contents.">
 <meta name=author content="Admin">
 <meta name=generator content="Hugo 0.88.1">
 <link rel=manifest href=https://codelink.ai/index.webmanifest>
 <meta name=msapplication-TileColor content="#18BC9D">
 <meta name=theme-color content="#fff">
-<meta property="og:image" content="https://codelink.ai/images/blog/post-7.webp">
-<meta name=twitter:image content="https://codelink.ai/images/blog/post-7.webp">
+<meta property="og:image" content="https://codelink.ai/images/blog/nginx1.png">
+<meta name=twitter:image content="https://codelink.ai/images/blog/nginx1.png">
 <meta name=twitter:card content="summary_large_image">
-<meta property="og:image:width" content="600">
-<meta property="og:image:height" content="254">
-<meta property="og:image:type" content="image/webp">
-<meta name=twitter:title content="Explaining the 5 Python thread locks">
-<meta name=twitter:description content="In a program where multiple threads with shared data are executed in parallel, thread-safe code will ensure that each thread is executed properly and correctly through a synchronization mechanism, without data contamination or other unexpected situations.">
-<meta property="og:title" content="Explaining the 5 Python thread locks">
-<meta property="og:description" content="In a program where multiple threads with shared data are executed in parallel, thread-safe code will ensure that each thread is executed properly and correctly through a synchronization mechanism, without data contamination or other unexpected situations.">
+<meta property="og:image:width" content="1921">
+<meta property="og:image:height" content="645">
+<meta property="og:image:type" content="image/png">
+<meta name=twitter:title content="Five application scenarios for understanding Nginx thoroughly">
+<meta name=twitter:description content="We will share the five application scenarios for Nginx: HTTP server, static server, reverse proxy server, load balancer, and separation of static and dynamic contents.">
+<meta property="og:title" content="Five application scenarios for understanding Nginx thoroughly">
+<meta property="og:description" content="We will share the five application scenarios for Nginx: HTTP server, static server, reverse proxy server, load balancer, and separation of static and dynamic contents.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://codelink.ai/blog/python/explaining-the-5-python-thread-locks/"><meta property="article:section" content="blog">
-<meta property="article:published_time" content="2021-11-20T15:40:24+06:00">
-<meta property="article:modified_time" content="2021-11-20T15:40:24+06:00">
+<meta property="og:url" content="https://codelink.ai/blog/devops/five-application-scenarios-for-understanding-nginx-thoroughly/"><meta property="article:section" content="blog">
+<meta property="article:published_time" content="2022-01-03T15:40:24+06:00">
+<meta property="article:modified_time" content="2022-01-03T15:40:24+06:00">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LQHFY4FG7"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date),gtag('config','G-6LQHFY4FG7',{anonymize_ip:!1})}</script>
 <link rel="shortcut icon" href=https://codelink.ai/images/favicon.ico type=image/x-icon>
@@ -103,11 +103,11 @@
 <div class=container>
 <div class=row>
 <div class=col-12>
-<h2 class="text-white mb-3">Explaining the 5 Python thread locks</h2>
+<h2 class="text-white mb-3">Five application scenarios for understanding Nginx thoroughly</h2>
 <nav aria-label=breadcrumb>
 <ol class="breadcrumb bg-transparent p-0">
 <li class="breadcrumb-item font-weight-semebold"><a class=text-white href=https://codelink.ai/>Home</a></li>
-<li class="breadcrumb-item font-weight-semebold active text-primary" aria-current=page>Explaining the 5 Python thread locks</li>
+<li class="breadcrumb-item font-weight-semebold active text-primary" aria-current=page>Five application scenarios for understanding Nginx thoroughly</li>
 </ol>
 </nav>
 </div>
@@ -119,819 +119,344 @@
 <div class=row>
 <div class=col-lg-8>
 <div class="position-relative mb-5">
-<img loading=lazy src=https://codelink.ai/images/blog/post-7.webp onerror="this.onerror=null,this.src='https://codelink.ai/images/blog/post-7.webp'" alt="post thumb" class="img-fluid w-100">
-<div class=card-type>Python</div>
+<img loading=lazy src=https://codelink.ai/images/blog/nginx1.png onerror="this.onerror=null,this.src='https://codelink.ai/images/blog/nginx1.png'" alt="post thumb" class="img-fluid w-100">
+<div class=card-type>Devops</div>
 </div>
-<div class="card-meta text-uppercase mb-2">by <strong class=text-dark>Admin</strong>/ on <strong class=text-dark>20 Nov 2021</strong></div>
-<h2>Explaining the 5 Python thread locks</h2>
+<div class="card-meta text-uppercase mb-2">by <strong class=text-dark>Admin</strong>/ on <strong class=text-dark>03 Jan 2022</strong></div>
+<h2>Five application scenarios for understanding Nginx thoroughly</h2>
 <div class=content>
 <hr>
-<p>This article will focus on the threading module, and for everyday developers, this content is a must-have, and also a high frequency interview FAQ.</p>
+<p>We will share the five application scenarios for Nginx: HTTP server, static server, reverse proxy server, load balancer, and separation of static and dynamic contents.</p>
+<h3 id=i-http-server>I. HTTP server</h3>
+<p>Nginx itself is also a static resource server. When there are only static resources, you can use Nginx to be a server, if a website is only a static page, then it can be deployed in this way.</p>
+<h4 id=1-first-in-the-document-root-directory-docroot-usrlocalvarwww-to-create-html-directory-and-then-in-the-html-put-a-testhtml>1. first in the document root directory Docroot (<code>/usr/local/var/www</code>) to create html directory, and then in the html put a test.html;</h4>
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/devops/five-application-scenarios-for-understanding-nginx-thoroughly/img/1.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<h4 id=2-configure-the-server-in-nginxconf>2. configure the server in nginx.conf</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>user mengday staff;
+
+http <span style=color:#f92672>{</span>
+    server <span style=color:#f92672>{</span>
+        listen 80;
+        server_name localhost;
+        client_max_body_size 1024M;
+
+        <span style=color:#75715e># default location</span>
+        location / <span style=color:#f92672>{</span>
+            root /usr/local/var/www/html;
+            index index.html index.htm;
+        index.html; index.htm; <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><h4 id=3-access-test>3. Access test</h4>
+<p><code>http://localhost/</code> points to <code>/usr/local/var/www/index.html</code>, index.html is the html that comes with nginx installation
+<code>http://localhost/test.html</code> points to <code>/usr/local/var/www/html/test.html</code></p>
 <blockquote>
-<p>Official documentation (<a href=https://docs.python.org/zh-cn/3.6/library/threading.html>https://docs.python.org/zh-cn/3.6/library/threading.html</a>)</p>
+<p>Note: If you get 403 Forbidden errors when accessing images, it may be because the first line of nginx.conf user configuration is not correct, the default is #user nobody; it is commented out, change it to user root under linux; change it to user username group under macos; then reload the configuration file or reboot and try again. The user name can be checked by who am i command.</p>
 </blockquote>
-<h3 id=thread-safety>Thread safety</h3>
-<hr>
-<p>Thread safety is a concept in multi-threaded or multi-process programming. In a program where multiple threads with shared data are executed in parallel, thread-safe code will ensure that each thread is executed properly and correctly through a synchronization mechanism, without data contamination or other unexpected situations.</p>
-<p>For example, if there are 10 candies (resources) in a room (process), and there are 3 villains (1 main thread and 2 sub-threads), when villain A eats 3 candies and is forced to rest by the system, he thinks there are 7 candies left, and when villain B eats 3 candies after working, then when villain A comes back on duty, he thinks there are 7 candies left, but in fact there are only 4.</p>
-<p>The above example where the data of thread A and thread B are not synchronized is a thread safety issue which can lead to very serious surprises, let&rsquo;s go by the following example.</p>
-<p>Here we have a value <code>num</code> with an initial value of 0. We open 2 threads.</p>
+<h4 id=4-command-introduction>4. Command Introduction</h4>
 <ul>
-<li>
-<p>Thread 1 performs a 10 million + 1 operation on num</p>
-</li>
-<li>
-<p>Thread 2 performs a -1 operation on <code>num</code> 10 million times</p>
-</li>
+<li>server : used to define the service, there can be multiple server blocks in http</li>
+<li>listen : Specify the IP address and port for the server to listen to requests, if the address is omitted, the server will listen to all addresses, if the port is omitted, the standard port is used</li>
+<li>server_name : the name of the service, used to configure the domain name</li>
+<li>location : The configuration corresponding to the mapped path uri, a server can have multiple locations, location followed by a uri, can be a regular expression, / means match any path, when the client accesses the path meets this uri will execute the code inside the location block</li>
+<li>root : root path, when visit <code>http://localhost/test.html</code>, &ldquo;<code>/test.html</code>&rdquo; will match to &ldquo;/&rdquo; uri, find root as <code>/usr/local/</code> <code>var/www/html</code>, the user accesses the resource physical address = root + uri = <code>/usr/local/var/www/html</code> + <code>/test.html</code> = <code>/usr/local/var/www/html/test.html</code></li>
+<li>index : set the home page, when only access server_name without any path behind is not to go root directly to the index command; if the access path does not specify a specific file, then return the index set resources, if you visit <code>http://localhost/html/</code> then the default return index.html</li>
 </ul>
-<p>The result may be staggering, as <code>num</code> does not end up being 0 as we thought.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-num <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>():
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sub</span>():
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    subThread01 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>add)
-    subThread02 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    subThread01<span style=color:#f92672>.</span>start()
-    subThread02<span style=color:#f92672>.</span>start()
-
-    subThread01<span style=color:#f92672>.</span>join()
-    subThread02<span style=color:#f92672>.</span>join()
-
-    print(<span style=color:#e6db74>&#34;num result : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> num)
-
-<span style=color:#75715e># The results are collected three times</span>
-<span style=color:#75715e># num result : 669214</span>
-<span style=color:#75715e># num result : -1849179</span>
-<span style=color:#75715e># num result : -525674</span>
-</code></pre></div><p>This is a very good case above, and to solve this problem we have to secure the timing of thread switching through locks.</p>
-<p>It is worth noting that the Python basic data types list, tuple, and dict are thread-safe, so if there are multiple threads operating on these three containers, we don&rsquo;t need to consider thread-safety issues.</p>
-<h3 id=the-role-of-locks>The role of locks</h3>
-<hr>
-<p>Locks are a means by which Python provides us with the ability to manipulate thread switching on our own, and they can be used to make thread switching orderly.</p>
-<p>Once thread switching is ordered, access and modification of data between threads becomes controlled, so to ensure thread safety, locks must be used.</p>
-<p>The threading module provides the five most common types of locks, which are divided by function as follows.</p>
+<h4 id=5-location-uri-regular-expression>5. location uri regular expression</h4>
 <ul>
-<li>synchronous locks: lock (only one can be released at a time)</li>
-<li>recursive locks: rlock (only one can be released at a time)</li>
-<li>conditional locks: condition (any one can be released at a time)</li>
-<li>Event lock: event (all at once)</li>
-<li>semaphore lock: semaphore (can release a specific one at a time)</li>
+<li><code>.</code> : match any character other than the newline character</li>
+<li><code>?</code> : repeat 0 times or 1 times</li>
+<li><code>+</code> : repeat 1 or more times</li>
+<li><code>*</code> : repeat 0 or more times</li>
+<li><code>\d</code> ：Match a number</li>
+<li><code>^</code> : Match the beginning of the string</li>
+<li><code>$</code> : Match the end of the string</li>
+<li><code>{n}</code> : Repeat n times</li>
+<li><code>{n,}</code> : Repeat n or more times</li>
+<li><code>[c]</code> : matches a single character c</li>
+<li><code>[a-z]</code> : matches any of the lowercase letters a-z</li>
+<li><code>(a|b|c)</code> : the genus line means match any of the cases, each case is separated by a vertical line, usually enclosed in parentheses, and matches a character or a b character or a c character</li>
+<li><code>\</code> Backslash: used to escape special characters</li>
 </ul>
-<h3 id=1-lock-synchronous-lock>1. Lock() synchronous lock</h3>
+<p>The content matched between the parentheses <code>()</code> can be referenced later by <code>$1</code>, and <code>$2</code> indicates the content in the second () before. It is easy to confuse people inside the regular \ escaping special characters.</p>
 <hr>
-<h4 id=basic-introduction>Basic introduction</h4>
-<p>Lock lock has many names, such as.</p>
-<ul>
-<li>Synchronous lock</li>
-<li>Mutual exclusion lock</li>
-</ul>
-<p>What do they mean? As follows.</p>
+<h3 id=ii-static-server>II. Static Server</h3>
+<p>In the company often encounter a static server, usually provides a function of upload, other applications if you need static resources from the static server.</p>
 <ol>
-<li>
-<p>Mutual exclusion means that a resource can be accessed by only one visitor at the same time, and is unique and exclusive, but mutual exclusion cannot restrict the order of access to the resource by the visitor, i.e., the access is unordered</p>
-</li>
-<li>
-<p>Synchronization means that on the basis of mutual exclusion (in most cases), other mechanisms are used to achieve orderly access to resources by visitors</p>
-</li>
-<li>
-<p>Synchronization is actually a more complex implementation of mutual exclusion, because it implements orderly access on top of mutual exclusion</p>
-</li>
+<li>Create images and img directories under <code>/usr/local/var/www</code>, and put a <code>test.jpg</code> under each directory respectively.</li>
 </ol>
-<p>The following methods are provided by the threading module in connection with synchronous locks.</p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left>Method</th>
-<th style=text-align:left>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>threading.Lock()</code></td>
-<td style=text-align:left>returns a synchronous lock object</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.acquire(blocking=True, timeout=1)</code></td>
-<td style=text-align:left>lock, when a thread is executing the locked block, it will not be allowed to switch to other threads, the default lock expiration time is 1 second</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.release()</code></td>
-<td style=text-align:left>Unlock, when a thread is executing an unlocked block, it will allow the system to switch to other threads according to the policy</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.locked()</code></td>
-<td style=text-align:left>determines whether the lock object is locked or not, and returns a boolean value</td>
-</tr>
-</tbody>
-</table>
-<h4 id=usage>Usage</h4>
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/devops/five-application-scenarios-for-understanding-nginx-thoroughly/img/2.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>http <span style=color:#f92672>{</span>
+    server <span style=color:#f92672>{</span>
+        listen 80;
+        server_name localhost;
+
+
+        set $doc_root /usr/local/var/www;
+
+        <span style=color:#75715e># default location</span>
+        location / <span style=color:#f92672>{</span>
+            root /usr/local/var/www/html;
+            index index.html index.htm;
+        index.html; <span style=color:#f92672>}</span>
+
+        location ^~ /images/ <span style=color:#f92672>{</span>
+            root $doc_root;
+       <span style=color:#f92672>}</span>
+
+       location ~* <span style=color:#ae81ff>\.</span> <span style=color:#f92672>(</span>gif|jpg|jpeg|png|bmp|ico|swf|css|js<span style=color:#f92672>)</span>$ <span style=color:#f92672>{</span>
+           root $doc_root/img;
+       <span style=color:#f92672>}</span>
+    <span style=color:#f92672>}</span>
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Custom variables use set directive, syntax set variable name value; reference use variable name value; reference use variable name; here customize doc_root variable.</p>
+<p>There are two general ways to map static server location.</p>
+<ul>
+<li>Use path, such as /images/ Generally, images are placed in some image directory.</li>
+<li>Use suffixes such as .jpg, .png, etc. to match the pattern</li>
+</ul>
+<p>Visit <code>http://localhost/test.jpg</code> to map to <code>$doc_root/img</code></p>
+<p>Visit <code>http://localhost/images/test.jpg</code> When the same path meets more than one location, it will match the location with higher priority, because the priority of <code>^~</code> is higher than <code>~</code>, so it will go to the location corresponding to <code>/images/</code>.</p>
+<p>There are several common location path mapping paths.</p>
+<ul>
+<li><code>=</code> Exact match for common characters. That is, exact match.</li>
+<li><code>^~</code> prefix matching. If the match is successful, no other locations will be matched.</li>
+<li><code>~</code> indicates a regular match, case sensitive</li>
+<li><code>~*</code> means perform a regular match, not case-sensitive</li>
+<li><code>/xxx/</code> regular string path matching</li>
+<li><code>/xxx/</code> generic match, any request will be matched to</li>
+</ul>
+<h4 id=location-priority>Location priority</h4>
+<p>When a path matches multiple locations, there is a priority order of which location can be matched, and the priority order is related to the expression type of the location value, not the order in the configuration file. For the same type of expression, the longer string will be matched first.</p>
+<p>The following are the descriptions in order of priority.</p>
+<ul>
+<li>The equal sign type (=) has the highest priority. Once the match is successful, no other matches are found and the search stops.</li>
+<li><code>^~</code> type expression, not a regular expression. Once the match is successful, no more matches are found and the search stops.</li>
+<li>The regular expression type (<code>~</code> <code>~*</code>) has the next highest priority. If more than one location can match, the one with the longest regular expression is used.</li>
+<li>Regular string match type. Match by prefix.</li>
+<li><code>/</code> generic match, if no match, match the generic</li>
+</ul>
+<p>Priority search problem: different types of location mapping decide whether to continue down the search</p>
+<ul>
+<li>equals type, <code>^~</code> type: once matched, the search stops, no other location will be matched</li>
+<li>Regular expression type (<code>~</code> <code>~*</code>), regular string matching type <code>/xxx/</code> : after matching, it will continue to search for other locations until it finds the highest priority, or stop searching when it finds the first case</li>
+</ul>
+<p>Location priority from highest to lowest:</p>
+<p>(<code>location =</code>) > (<code>location full path</code>) > (<code>location ^~ path</code>) > (<code>location ~,~* regular order</code>) > (l<code>ocation partial start path</code>) > (<code>/</code>)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>location <span style=color:#f92672>=</span> / <span style=color:#f92672>{</span>
+    <span style=color:#75715e># Exact match /, hostname cannot be followed by any string /</span>
+    <span style=color:#f92672>[</span> configuration A <span style=color:#f92672>]</span>
+<span style=color:#f92672>}</span>
+location / <span style=color:#f92672>{</span>
+    <span style=color:#75715e># Match all requests that start with /.</span>
+    <span style=color:#75715e># But if a longer expression of the same type is available, the longer expression is chosen.</span>
+    <span style=color:#75715e># If there are regular expressions to match, the regular expressions are matched first.</span>
+    <span style=color:#f92672>[</span> configuration B <span style=color:#f92672>]</span>
+<span style=color:#f92672>}</span>
+location /documents/ <span style=color:#f92672>{</span>
+    <span style=color:#75715e># Match all requests that start with /documents/, and continue down the list after the match.</span>
+    <span style=color:#75715e># But if there is a longer expression of the same type, the longer expression is chosen.</span>
+    <span style=color:#75715e># If there are regular expressions to match, the regular expressions are given priority.</span>
+    <span style=color:#f92672>[</span> configuration C <span style=color:#f92672>]</span>
+<span style=color:#f92672>}</span>
+location ^~ /images/ <span style=color:#f92672>{</span>
+    <span style=color:#75715e># Match all expressions starting with /images/, and if the match is successful, stop matching the lookup and stop searching.</span>
+    <span style=color:#75715e># So, even if there is a matching regular expression location, it will not be used</span>
+    <span style=color:#f92672>[</span> configuration D <span style=color:#f92672>]</span>
+<span style=color:#f92672>}</span>
+
+location ~* <span style=color:#ae81ff>\.</span> <span style=color:#f92672>(</span>gif|jpg|jpeg<span style=color:#f92672>)</span>$ <span style=color:#f92672>{</span>
+    <span style=color:#75715e># Match all requests ending with gif jpg jpeg.</span>
+    <span style=color:#75715e># But requests starting with /images/ will use Configuration D, which has a higher priority</span>
+    <span style=color:#f92672>[</span> configuration E <span style=color:#f92672>]</span>
+<span style=color:#f92672>}</span>
+
+location /images/ <span style=color:#f92672>{</span>
+    <span style=color:#75715e># Characters matching /images/ will continue to search down</span>
+    <span style=color:#f92672>[</span> configuration F <span style=color:#f92672>]</span>
+<span style=color:#f92672>}</span>
+
+
+location <span style=color:#f92672>=</span> /test.htm <span style=color:#f92672>{</span>
+    root /usr/local/var/www/htm;
+    index index.htm;
+index.htm; <span style=color:#f92672>}</span>
+</code></pre></div><blockquote>
+<p>Note: The priority of location is not related to the location of location configuration</p>
+</blockquote>
 <hr>
-<p>Synchronous locks can only release one thread at a time. A locked thread will not surrender execution rights while running, but will only hand over execution rights to other threads through system scheduling when the thread is unlocked.</p>
-<p>The top problem is solved using synchronous locking as follows.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
+<h3 id=iii-reverse-proxy-sever>III. Reverse Proxy Sever</h3>
+<p>Reverse proxy should be the most used feature of Nginx. Reverse proxy means that the proxy server accepts connection requests on the Internet, forwards the requests to a server on the internal network, and returns the results obtained from the server to the client requesting the connection on the Internet, at which point the proxy server behaves externally as a reverse proxy server.</p>
+<p>Simply put, the real server cannot be directly accessed by the external network, so a proxy server is needed, while the proxy server can be accessed by the external network and the real server in the same network environment, of course, it may be the same server, the port is different.</p>
+<p>Reverse proxy through the proxy_pass command to achieve .</p>
+<p>Start a Java Web project with port 8081</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>server <span style=color:#f92672>{</span>
+    listen 80;
+    server_name localhost;
 
-num <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+    location / <span style=color:#f92672>{</span>
+        proxy_pass http://localhost:8081;
+        proxy_set_header Host $host:$server_port;
+        <span style=color:#75715e># Set user ip address</span>
+         proxy_set_header X-Forwarded-For $remote_addr;
+         <span style=color:#75715e># When requesting server error to find another server</span>
+         proxy_next_upstream error timeout invalid_header http_500 http_502 http_503; 
+    <span style=color:#f92672>}</span>
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>():
-    lock<span style=color:#f92672>.</span>acquire()
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-    lock<span style=color:#f92672>.</span>release()
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sub</span>():
-    lock<span style=color:#f92672>.</span>acquire()
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
-    lock<span style=color:#f92672>.</span>release()
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    lock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Lock()
-
-    subThread01 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>add)
-    subThread02 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    subThread01<span style=color:#f92672>.</span>start()
-    subThread02<span style=color:#f92672>.</span>start()
-
-    subThread01<span style=color:#f92672>.</span>join()
-    subThread02<span style=color:#f92672>.</span>join()
-
-    print(<span style=color:#e6db74>&#34;num result : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> num)
-
-<span style=color:#75715e># The results are collected three times</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-</code></pre></div><p>This makes the code completely serial, which is not as fast as directly using serialized single-threaded execution for such computationally intensive I/O operations, so this example is only meant as an example and does not outline the real use of locks.</p>
-<h4 id=deadlock-phenomenon>Deadlock phenomenon</h4>
+http_500 http_502; <span style=color:#f92672>}</span>   
+</code></pre></div><p>When we access localhost, it&rsquo;s the same as accessing <code>localhost:8081</code></p>
 <hr>
-<p>For synchronous locks, one acquire() must correspond to one <code>release()</code>, and the operation of using multiple <code>acquires()</code> followed by multiple <code>releases()</code> cannot be repeated continuously, which will cause a deadlock causing the program to block and not move at all, as follows.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
+<h3 id=iv-load-balancer>IV. Load Balancer</h3>
+<p>Load balancing is also a common feature of Nginx. Load balancing means spreading the execution across multiple operating units, such as web servers, FTP servers, enterprise critical application servers, and other mission-critical servers, so that they can work together to complete their tasks.</p>
+<p>Simply put, when there are two or more servers, the requests are randomly distributed to the specified servers according to the rules, and the load balancing configuration generally requires a reverse proxy to be configured at the same time to jump to the load balancing through the reverse proxy. Nginx currently supports three load balancing policies, and two common third-party policies.</p>
+<p>Load balancing is achieved through the upstream directive. Recommended: Java Interview Questions</p>
+<h4 id=1-rr-round-robin-polling-by-default>1. RR (round robin :polling by default)</h4>
+<p>Each request is assigned to different back-end servers one by one in chronological order, that is, the first request is assigned to the first server, the second request is assigned to the second server, and if there are only two servers, the third request continues to be assigned to the first one, so that the cycle of polling continues, that is, the ratio of requests received by servers is 1:1, and if the back-end server is down, it can be automatically eliminated. Polling is the default configuration and does not require much configuration</p>
+<p>Start the same project on ports 8081 and 8082 respectively</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>upstream web_servers <span style=color:#f92672>{</span>  
+   server localhost:8081;  
+   server localhost:8082;  
+<span style=color:#f92672>}</span>
 
-num <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
+server <span style=color:#f92672>{</span>
+    listen 80;
+    server_name localhost;
+    <span style=color:#75715e>#access_log logs/host.access.log main;</span>
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>():
-    lock<span style=color:#f92672>.</span>acquire() <span style=color:#75715e># locking</span>
-    lock<span style=color:#f92672>.</span>acquire() <span style=color:#75715e># deadlock</span>
-    <span style=color:#75715e># Do not execute</span>
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-    lock<span style=color:#f92672>.</span>release()
-    lock<span style=color:#f92672>.</span>release()
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sub</span>():
-    lock<span style=color:#f92672>.</span>acquire() <span style=color:#75715e># locking</span>
-    lock<span style=color:#f92672>.</span>acquire() <span style=color:#75715e># deadlock</span>
-    <span style=color:#75715e># Do not execute</span>
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
-    lock<span style=color:#f92672>.</span>release()
-    lock<span style=color:#f92672>.</span>release()
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    lock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Lock()
-
-    subThread01 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>add)
-    subThread02 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    subThread01<span style=color:#f92672>.</span>start()
-    subThread02<span style=color:#f92672>.</span>start()
-
-    subThread01<span style=color:#f92672>.</span>join()
-    subThread02<span style=color:#f92672>.</span>join()
-
-    print(<span style=color:#e6db74>&#34;num result : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> num)
-</code></pre></div><h4 id=the-with-statement>The with statement</h4>
+    location / <span style=color:#f92672>{</span>
+        proxy_pass http://web_servers;
+        <span style=color:#75715e># Header Host must be specified</span>
+        proxy_set_header Host $host:$server_port;
+    host $host:$server_port; <span style=color:#f92672>}</span>
+ <span style=color:#f92672>}</span>
+</code></pre></div><p>The access address can still get the response <code>http://localhost/api/user/login?username=zhangsan&password=111111</code>, this way is polled</p>
+<h4 id=2-weights>2. weights</h4>
+<p>Specify the polling rate, weight is proportional to the access ratio, that is, the proportion of requests received by the server is the proportion of the respective configured weight, used in the case of uneven performance of the back-end server, such as the server performance is poor to receive fewer requests, the server performance is better to handle more requests.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>upstream test <span style=color:#f92672>{</span>
+    server localhost:8081 weight<span style=color:#f92672>=</span>1;
+    server localhost:8082 weight<span style=color:#f92672>=</span>3;
+    server localhost:8083 weight<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span> backup;
+backup; <span style=color:#f92672>}</span>
+</code></pre></div><p>The example is that only one of the four requests is assigned to 8081, and the other three are assigned to 8082. backup means hot standby, which only goes to 8083 if both 8081 and 8082 are down</p>
+<h4 id=3-ip_hash>3. ip_hash</h4>
+<p>The above two ways have a problem, that is, the next request may be distributed to another server, when our program is not stateless (using the session to save data), then there is a big problem, such as the login information is saved to the session, then jump to another server when you need to log in again So many times we need a client to access only one server, then we need to use iphash, iphash each request by accessing the IP hash result distribution, so that each visitor fixed access to a back-end server, can solve the problem of session.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>upstream test <span style=color:#f92672>{</span>
+    ip_hash;
+    server localhost:8080;
+    server localhost:8081;
+<span style=color:#f92672>}</span>
+</code></pre></div><h4 id=4-fair-third-party>4. fair (third party)</h4>
+<p>Distribute requests according to the response time of the backend server, with the shorter response time being assigned first. This is configured to give the user a faster response</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>upstream backend <span style=color:#f92672>{</span>
+    fair;
+    server localhost:8080;
+    server localhost:8081;
+<span style=color:#f92672>}</span>
+</code></pre></div><h4 id=5-url_hash-third-party>5. url_hash (third party)</h4>
+<p>Allocate requests by the hash result of the accessed url, so that each url is directed to the same backend server, which is more effective when the backend server is cached. Add the hash statement to the upstream, the server statement can not write other parameters such as weight, hash_method is the hash algorithm used</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>upstream backend <span style=color:#f92672>{</span>
+    hash $request_uri;
+    hash_method crc32;
+    server localhost:8080;
+    server localhost:8081;
+<span style=color:#f92672>}</span>
+</code></pre></div><p>Each of the above five load balancing is applicable to different situations, so you can choose which policy mode to use according to the actual situation, but fair and url_hash need to install third-party modules to use.</p>
 <hr>
-<p>Since the <code>__enter__()</code> and <code>__exit__()</code> methods are implemented in the <code>threading.Lock()</code> object, we can use the with statement to perform context-managed locking and unlocking operations in the following way.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-num <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>():
-    <span style=color:#66d9ef>with</span> lock:
-        <span style=color:#75715e># auto-lock</span>
-        <span style=color:#66d9ef>global</span> num
-        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-            num <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-        <span style=color:#75715e># Auto-unlock</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sub</span>():
-    <span style=color:#66d9ef>with</span> lock:
-        <span style=color:#75715e># Auto-lock</span>
-        <span style=color:#66d9ef>global</span> num
-        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-            num <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
-        <span style=color:#75715e># Auto-unlock</span>
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    lock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Lock()
-
-    subThread01 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>add)
-    subThread02 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    subThread01<span style=color:#f92672>.</span>start()
-    subThread02<span style=color:#f92672>.</span>start()
-
-    subThread01<span style=color:#f92672>.</span>join()
-    subThread02<span style=color:#f92672>.</span>join()
-
-    print(<span style=color:#e6db74>&#34;num result : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> num)
-    
-<span style=color:#75715e># The results are collected three times</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-</code></pre></div><h3 id=2-rlock-recursive-lock>2. RLock() Recursive lock</h3>
-<hr>
-<h4 id=basic-introduction-1>Basic introduction</h4>
-<p>Recursive locking is an upgraded version of synchronous locking, which can be done on the basis of synchronous locking by repeatedly using <code>acquire()</code> and then repeatedly using <code>release()</code>, but it must be noted that the number of locks and unlocks must be the same, otherwise it will also cause deadlock phenomenon.</p>
-<p>The following methods are provided by the threading module with recursive locks.</p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left>Method</th>
-<th style=text-align:left>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>threading.RLock()</code></td>
-<td style=text-align:left>returns a recursive lock object</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.acquire(blocking=True, timeout=1)</code></td>
-<td style=text-align:left>lock, when a thread is executing the locked block, it will not be allowed to switch to other threads, the default lock expiration time is 1 second</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.release()</code></td>
-<td style=text-align:left>Unlock, when a thread is executing an unlocked block, it will allow the system to switch to other threads according to the policy</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.locked()</code></td>
-<td style=text-align:left>determines whether the lock object is locked or not, and returns a boolean value</td>
-</tr>
-</tbody>
-</table>
-<h4 id=usage-1>Usage</h4>
-<p>The following is a simple use of recursive locking. If you use synchronous locking, deadlocking will occur, but recursive locking will not.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-num <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>():
-    lock<span style=color:#f92672>.</span>acquire()
-    lock<span style=color:#f92672>.</span>acquire()
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-    lock<span style=color:#f92672>.</span>release()
-    lock<span style=color:#f92672>.</span>release()
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sub</span>():
-    lock<span style=color:#f92672>.</span>acquire()
-    lock<span style=color:#f92672>.</span>acquire()
-    <span style=color:#66d9ef>global</span> num
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-        num <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
-    lock<span style=color:#f92672>.</span>release()
-    lock<span style=color:#f92672>.</span>release()
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    lock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>RLock()
-
-    subThread01 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>add)
-    subThread02 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    subThread01<span style=color:#f92672>.</span>start()
-    subThread02<span style=color:#f92672>.</span>start()
-
-    subThread01<span style=color:#f92672>.</span>join()
-    subThread02<span style=color:#f92672>.</span>join()
-
-    print(<span style=color:#e6db74>&#34;num result : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> num)
-
-<span style=color:#75715e># The results are collected three times</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-</code></pre></div><h4 id=the-with-statement-1>The with statement</h4>
-<p>Since the <code>__enter__()</code> and <code>__exit__()</code> methods are implemented in the <code>threading.RLock()</code> object, we can use the with statement to perform context-managed locking and unlocking operations in the form of</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-num <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>add</span>():
-    <span style=color:#66d9ef>with</span> lock:
-        <span style=color:#75715e># auto-lock</span>
-        <span style=color:#66d9ef>global</span> num
-        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-            num <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-        <span style=color:#75715e># Auto-unlock</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sub</span>():
-    <span style=color:#66d9ef>with</span> lock:
-        <span style=color:#75715e># Auto-lock</span>
-        <span style=color:#66d9ef>global</span> num
-        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>10_000_000</span>):
-            num <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
-        <span style=color:#75715e># Auto-unlock</span>
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    lock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>RLock()
-
-    subThread01 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>add)
-    subThread02 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    subThread01<span style=color:#f92672>.</span>start()
-    subThread02<span style=color:#f92672>.</span>start()
-
-    subThread01<span style=color:#f92672>.</span>join()
-    subThread02<span style=color:#f92672>.</span>join()
-
-    print(<span style=color:#e6db74>&#34;num result : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> num)
-
-<span style=color:#75715e># The results are collected three times</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-<span style=color:#75715e># num result : 0</span>
-</code></pre></div><h3 id=3-condition-condition-lock>3. Condition() Condition lock</h3>
-<hr>
-<h4 id=basic-introduction-2>Basic introduction</h4>
-<p>Condition lock is based on the recursive lock to add the function to suspend the running of the thread. And we can use <code>wait()</code> and <code>notify()</code> to control the number of threads executed.</p>
-<p>Note: Conditional locks can be freely set to release several threads at a time.</p>
-<p>The following methods are provided by the threading module and the conditional lock.</p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left>Method</th>
-<th style=text-align:left>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>threading.Condition()</code></td>
-<td style=text-align:left>returns a conditional lock object</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.acquire(blocking=True, timeout=1)</code></td>
-<td style=text-align:left>lock, when a thread is executing the locked block, it will not be allowed to switch to another thread, the default lock expiration time is 1 second</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.release()</code></td>
-<td style=text-align:left>Unlock, when a thread is executing an unlocked block, it will allow the system to switch to other threads according to the policy</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.wait(timeout=None)</code></td>
-<td style=text-align:left>sets the current thread to a &ldquo;wait&rdquo; state, which will only continue after the thread is &ldquo;notified&rdquo; or the timeout expires. The thread in the &ldquo;wait&rdquo; state will allow the system to switch to other threads according to the policy</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.wait_for(predicate, timeout=None)</code></td>
-<td style=text-align:left>sets the current thread to the &ldquo;waiting&rdquo; state, and will only continue to run after the thread&rsquo;s predicate returns a True or the timeout expires. The thread in the &ldquo;waiting&rdquo; state will allow the system to switch to other threads according to the policy. Note: the predicate parameter should be passed as a callable object and return a bool type result</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.notify(n=1)</code></td>
-<td style=text-align:left>notifies a thread with the current status of &ldquo;waiting&rdquo; to continue running, or multiple threads with the n parameter</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.notify_all()</code></td>
-<td style=text-align:left>notifies all threads whose current state is &ldquo;waiting&rdquo; to continue running</td>
-</tr>
-</tbody>
-</table>
-<h4 id=usage-2>Usage</h4>
-<p>The following example starts 10 sub-threads and immediately sets the 10 sub-threads to the waiting state.</p>
-<p>Then we can send one or more notifications to resume the waiting subthreads.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-currentRunThreadNumber <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-maxSubThreadNumber <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>task</span>():
-    <span style=color:#66d9ef>global</span> currentRunThreadNumber
-    thName <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>currentThread()<span style=color:#f92672>.</span>name
-
-    condLock<span style=color:#f92672>.</span>acquire() <span style=color:#75715e># lock</span>
-    print(<span style=color:#e6db74>&#34;start and wait run thread : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> thName)
-
-    condLock<span style=color:#f92672>.</span>wait() <span style=color:#75715e># suspend the thread and wait to wake it up</span>
-    currentRunThreadNumber <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-    print(<span style=color:#e6db74>&#34;carry on run thread : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> thName)
-
-    condLock<span style=color:#f92672>.</span>release() <span style=color:#75715e># unlock</span>
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    condLock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Condition()
-
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(maxSubThreadNumber):
-        subThreadIns <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>task)
-        subThreadIns<span style=color:#f92672>.</span>start()
-
-    <span style=color:#66d9ef>while</span> currentRunThreadNumber <span style=color:#f92672>&lt;</span> maxSubThreadNumber:
-        notifyNumber <span style=color:#f92672>=</span> int(
-            input(<span style=color:#e6db74>&#34;Please enter the number of threads that need to be notified to run:&#34;</span>))
-
-        condLock<span style=color:#f92672>.</span>acquire()
-        condLock<span style=color:#f92672>.</span>notify(notifyNumber) <span style=color:#75715e># release</span>
-        condLock<span style=color:#f92672>.</span>release()
-
-    print(<span style=color:#e6db74>&#34;main thread run end&#34;</span>)
-    
-<span style=color:#75715e># Start 10 subthreads first, then all of them will become waiting</span>
-<span style=color:#75715e># start and wait run thread : Thread-1</span>
-<span style=color:#75715e># start and wait run thread : Thread-2</span>
-<span style=color:#75715e># start and wait run thread : Thread-3</span>
-<span style=color:#75715e># start and wait run thread : Thread-4</span>
-<span style=color:#75715e># start and wait run thread : Thread-5</span>
-<span style=color:#75715e># start and wait run thread : Thread-6</span>
-<span style=color:#75715e># start and wait run thread : Thread-7</span>
-<span style=color:#75715e># start and wait run thread : Thread-8</span>
-<span style=color:#75715e># start and wait run thread : Thread-9</span>
-<span style=color:#75715e># start and wait run thread : Thread-10</span>
-
-<span style=color:#75715e># Batch send notification to release a specific number of sub threads to continue running</span>
-<span style=color:#75715e># Please enter the number of threads that need to be notified to run: 5 # Release 5</span>
-<span style=color:#75715e># carry on run thread : Thread-4</span>
-<span style=color:#75715e># carry on run thread : Thread-3</span>
-<span style=color:#75715e># carry on run thread : Thread-1</span>
-<span style=color:#75715e># carry on run thread : Thread-2</span>
-<span style=color:#75715e># carry on run thread : Thread-5</span>
-
-<span style=color:#75715e># Please enter the number of threads that need to be notified to run : 5 # release 5</span>
-<span style=color:#75715e># carry on run thread : Thread-8</span>
-<span style=color:#75715e># carry on run thread : Thread-10</span>
-<span style=color:#75715e># carry on run thread : Thread-6</span>
-<span style=color:#75715e># carry on run thread : Thread-9</span>
-<span style=color:#75715e># carry on run thread : Thread-7</span>
-
-<span style=color:#75715e># Please enter the number of threads that need to be notified to run: 1</span>
-<span style=color:#75715e># main thread run end</span>
-</code></pre></div><h4 id=with-statement>with statement</h4>
-<p>Since the <code>__enter__()</code> and <code>__exit__()</code> methods are implemented in the <code>threading.Condition()</code> object, we can use the with statement to perform context-managed locking and unlocking operations in the form of</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-currentRunThreadNumber <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-maxSubThreadNumber <span style=color:#f92672>=</span> <span style=color:#ae81ff>10</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>task</span>():
-    <span style=color:#66d9ef>global</span> currentRunThreadNumber
-    thName <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>currentThread()<span style=color:#f92672>.</span>name
-
-    <span style=color:#66d9ef>with</span> condLock:
-        print(<span style=color:#e6db74>&#34;start and wait run thread : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> thName)
-        condLock<span style=color:#f92672>.</span>wait() <span style=color:#75715e># suspend the thread and wait to wake it up</span>
-        currentRunThreadNumber <span style=color:#f92672>+=</span> <span style=color:#ae81ff>1</span>
-        print(<span style=color:#e6db74>&#34;carry on run thread : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> thName)
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    condLock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(maxSubThreadNumber):
-        subThreadIns <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>task)
-        subThreadIns<span style=color:#f92672>.</span>start()
-
-    <span style=color:#66d9ef>while</span> currentRunThreadNumber <span style=color:#f92672>&lt;</span> maxSubThreadNumber:
-        notifyNumber <span style=color:#f92672>=</span> int(
-            input(<span style=color:#e6db74>&#34;Please enter the number of threads that need to be notified to run:&#34;</span>))
-
-        <span style=color:#66d9ef>with</span> condLock:
-            condLock<span style=color:#f92672>.</span>notify(notifyNumber) <span style=color:#75715e># Release</span>
-
-    print(<span style=color:#e6db74>&#34;main thread run end&#34;</span>)
-</code></pre></div><h3 id=4-event-event-lock>4. Event() event lock</h3>
-<hr>
-<h4 id=basic-introduction-3>Basic introduction</h4>
-<p>Event lock is based on conditional locking. The difference between it and conditional locking is that it can only release all the threads at once, and cannot release any number of child threads to continue running.</p>
-<p>We can think of event lock as a traffic light, when the light is red all sub-threads are suspended and enter the &ldquo;waiting&rdquo; state, when the light is green all sub-threads are back to &ldquo;running&rdquo;.</p>
-<p>The following methods are provided by the threading module in relation to the event lock.</p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left>Method</th>
-<th style=text-align:left>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>threading.Event()</code></td>
-<td style=text-align:left>returns an event lock object</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.clear()</code></td>
-<td style=text-align:left>sets the event lock to a red light, i.e. all threads are suspended</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.is_set()</code></td>
-<td style=text-align:left>is used to determine the current event lock status, red is False, green is True</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.set()</code></td>
-<td style=text-align:left>sets the event lock to a green state, i.e. all threads resume running</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.wait(timeout=None)</code></td>
-<td style=text-align:left>sets the current thread to the &ldquo;wait&rdquo; state, which will continue to run only after the thread receives the &ldquo;green light&rdquo; or the timeout expires. The thread in the &ldquo;wait&rdquo; state will allow the system to switch to other threads according to the policy.</td>
-</tr>
-</tbody>
-</table>
-<h4 id=usage-3>Usage</h4>
-<p>Event locks cannot be used with the with statement, only in the usual way.</p>
-<p>Let&rsquo;s simulate the operation of a thread and a traffic light, stop on red and go on green as follows</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-maxSubThreadNumber <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>task</span>():
-    thName <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>currentThread()<span style=color:#f92672>.</span>name
-    print(<span style=color:#e6db74>&#34;start and wait run thread : </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> thName)
-    eventLock<span style=color:#f92672>.</span>wait() <span style=color:#75715e># pause run and wait for green light</span>
-    print(<span style=color:#e6db74>&#34;green light, </span><span style=color:#e6db74>%s</span><span style=color:#e6db74> carry on run&#34;</span> <span style=color:#f92672>%</span> thName)
-    print(<span style=color:#e6db74>&#34;red light, </span><span style=color:#e6db74>%s</span><span style=color:#e6db74> stop run&#34;</span> <span style=color:#f92672>%</span> thName)
-    eventLock<span style=color:#f92672>.</span>wait() <span style=color:#75715e># pause run, wait for green light</span>
-    print(<span style=color:#e6db74>&#34;green light, </span><span style=color:#e6db74>%s</span><span style=color:#e6db74> carry on run&#34;</span> <span style=color:#f92672>%</span> thName)
-    print(<span style=color:#e6db74>&#34;sub thread </span><span style=color:#e6db74>%s</span><span style=color:#e6db74> run end&#34;</span> <span style=color:#f92672>%</span> thName)
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-
-    eventLock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Event()
-
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(maxSubThreadNumber):
-        subThreadIns <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>task)
-        subThreadIns<span style=color:#f92672>.</span>start()
-
-    eventLock<span style=color:#f92672>.</span>set() <span style=color:#75715e># set to green</span>
-    eventLock<span style=color:#f92672>.</span>clear() <span style=color:#75715e># set to red</span>
-    eventLock<span style=color:#f92672>.</span>set() <span style=color:#75715e># set to green</span>
-
-<span style=color:#75715e># start and wait run thread : Thread-1</span>
-<span style=color:#75715e># start and wait run thread : Thread-2</span>
-<span style=color:#75715e># start and wait run thread : Thread-3</span>
-
-<span style=color:#75715e># green light, Thread-1 carry on run</span>
-<span style=color:#75715e># red light, Thread-1 stop run</span>
-<span style=color:#75715e># green light, Thread-1 carry on run</span>
-<span style=color:#75715e># sub thread Thread-1 run end</span>
-
-<span style=color:#75715e># green light, Thread-3 carry on run</span>
-<span style=color:#75715e># red light, Thread-3 stop run</span>
-<span style=color:#75715e># green light, Thread-3 carry on run</span>
-<span style=color:#75715e># sub thread Thread-3 run end</span>
-
-<span style=color:#75715e># green light, Thread-2 carry on run</span>
-<span style=color:#75715e># red light, Thread-2 stop run</span>
-<span style=color:#75715e># green light, Thread-2 carry on run</span>
-<span style=color:#75715e># sub thread Thread-2 run end</span>
-</code></pre></div><h3 id=5-semaphore-semaphore-lock>5. Semaphore() semaphore lock</h3>
-<hr>
-<h4 id=basic-introduction-4>Basic Introduction</h4>
-<p>A semaphore lock is also based on a conditional lock. It differs from a conditional lock and an event lock as follows.</p>
-<p>Conditional lock: You can release any thread that is in the &ldquo;waiting&rdquo; state at one time.</p>
-<p>Event lock: All threads in the &ldquo;waiting&rdquo; state can be released at once.</p>
-<p>Semaphore locks: a specified number of threads can be released in a batch in a &ldquo;locked&rdquo; state.</p>
-<p>The following methods are provided by the threading module in relation to semaphore locks.</p>
-<table>
-<thead>
-<tr>
-<th style=text-align:left>Method</th>
-<th style=text-align:left>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style=text-align:left><code>threading.Semaphore()</code></td>
-<td style=text-align:left>returns a semaphore lock object</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.acquire(blocking=True, timeout=1)</code></td>
-<td style=text-align:left>lock, when a thread is executing a locked block, it will not be allowed to switch to another thread, the default lock expiration time is 1 second</td>
-</tr>
-<tr>
-<td style=text-align:left><code>lockObject.release()</code></td>
-<td style=text-align:left>Unlock, when a thread is executing an unlocked block, it will allow the system to switch to other threads according to the policy</td>
-</tr>
-</tbody>
-</table>
-<h4 id=usage-4>Usage</h4>
-<p>The following is a sample usage, which you can use as a width-limited section where only the same number of threads can be released at a time.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-<span style=color:#f92672>import</span> time
-
-maxSubThreadNumber <span style=color:#f92672>=</span> <span style=color:#ae81ff>6</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>task</span>():
-    thName <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>currentThread()<span style=color:#f92672>.</span>name
-    semaLock<span style=color:#f92672>.</span>acquire()
-    print(<span style=color:#e6db74>&#34;run sub thread </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> thName)
-    time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>3</span>)
-    semaLock<span style=color:#f92672>.</span>release()
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    <span style=color:#75715e># Only 2 can be released at a time</span>
-    semaLock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Semaphore(<span style=color:#ae81ff>2</span>)
-
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(maxSubThreadNumber):
-        subThreadIns <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>task)
-        subThreadIns<span style=color:#f92672>.</span>start()
-
-
-<span style=color:#75715e># run sub thread Thread-1</span>
-<span style=color:#75715e># run sub thread Thread-2</span>
-
-<span style=color:#75715e># run sub thread Thread-3</span>
-<span style=color:#75715e># run sub thread Thread-4</span>
-
-<span style=color:#75715e># run sub thread Thread-6</span>
-<span style=color:#75715e># run sub thread Thread-5</span>
-</code></pre></div><h4 id=the-with-statement-2>The with statement</h4>
-<p>Since the <code>__enter__()</code> and <code>__exit__()</code> methods are implemented in the <code>threading.Semaphore()</code> object, we can use the with statement to perform context-managed locking and unlocking operations.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-<span style=color:#f92672>import</span> time
-
-maxSubThreadNumber <span style=color:#f92672>=</span> <span style=color:#ae81ff>6</span>
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>task</span>():
-    thName <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>currentThread()<span style=color:#f92672>.</span>name
-    <span style=color:#66d9ef>with</span> semaLock:
-        print(<span style=color:#e6db74>&#34;run sub thread </span><span style=color:#e6db74>%s</span><span style=color:#e6db74>&#34;</span> <span style=color:#f92672>%</span> thName)
-        time<span style=color:#f92672>.</span>sleep(<span style=color:#ae81ff>3</span>)
-
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-
-    semaLock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Semaphore(<span style=color:#ae81ff>2</span>)
-
-    <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(maxSubThreadNumber):
-        subThreadIns <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>task)
-        subThreadIns<span style=color:#f92672>.</span>start()
-</code></pre></div><h3 id=lock-relationships>Lock Relationships</h3>
-<hr>
-<p>The above 5 types of locks can be said to be based on synchronous locks to do, which you can find from the source code.</p>
-<p>First, let&rsquo;s look at the RLock recursive lock. The implementation of recursive lock is very simple, it maintains an internal counter, when the counter is not 0, the thread cannot be switched by I/O operations and time polling mechanism. This is not the case when the counter is 0:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> __init__(self):
-    self<span style=color:#f92672>.</span>_block <span style=color:#f92672>=</span> _allocate_lock()
-    self<span style=color:#f92672>.</span>_owner <span style=color:#f92672>=</span> <span style=color:#66d9ef>None</span>
-    self<span style=color:#f92672>.</span>_count <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span> <span style=color:#75715e># counter</span>
-</code></pre></div><p>The Condition conditional lock actually has two locks inside, a bottom-level lock (synchronous lock) and a high-level lock (recursive lock).</p>
-<p>There are two ways to unlock the low-level lock. Using the <code>wait()</code> method temporarily unlocks the bottom-level lock and adds a high-level lock, and only when it receives a notfiy() from another thread does it unlock the high-level lock and re-lock the low-level lock, which means that the condition lock is implemented based on the constant switching between synchronous and recursive locks.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>def</span> __init__(self, lock<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>):
-    <span style=color:#66d9ef>if</span> lock <span style=color:#f92672>is</span> <span style=color:#66d9ef>None</span>:
-        lock <span style=color:#f92672>=</span> RLock() <span style=color:#75715e># You can see that conditional locking is internally based on recursive locking, which in turn is based on synchronous locking</span>
-    self<span style=color:#f92672>.</span>_lock <span style=color:#f92672>=</span> lock
-
-    self<span style=color:#f92672>.</span>acquire <span style=color:#f92672>=</span> lock<span style=color:#f92672>.</span>acquire
-    self<span style=color:#f92672>.</span>release <span style=color:#f92672>=</span> lock<span style=color:#f92672>.</span>release
-    <span style=color:#66d9ef>try</span>:
-        self<span style=color:#f92672>.</span>_release_save <span style=color:#f92672>=</span> lock<span style=color:#f92672>.</span>_release_save
-    <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>AttributeError</span>:
-        <span style=color:#66d9ef>pass</span>
-    <span style=color:#66d9ef>try</span>:
-        self<span style=color:#f92672>.</span>_acquire_restore <span style=color:#f92672>=</span> lock<span style=color:#f92672>.</span>_acquire_restore
-    <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>AttributeError</span>:
-        <span style=color:#66d9ef>pass</span>
-    <span style=color:#66d9ef>try</span>:
-        self<span style=color:#f92672>.</span>_is_owned <span style=color:#f92672>=</span> lock<span style=color:#f92672>.</span>_is_owned
-    <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>AttributeError</span>:
-        <span style=color:#66d9ef>pass</span>
-    self<span style=color:#f92672>.</span>_waiters <span style=color:#f92672>=</span> _deque()
-</code></pre></div><p>Event event locks are internally based on conditional locks to do the following.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Event</span>:
-
-    <span style=color:#66d9ef>def</span> __init__(self):
-        self<span style=color:#f92672>.</span>_cond <span style=color:#f92672>=</span> Condition(Lock()) <span style=color:#75715e># Instantiates a conditional lock.</span>
-        self<span style=color:#f92672>.</span>_flag <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>
-
-    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>_reset_internal_locks</span>(self):
-        <span style=color:#75715e># private! called by Thread._reset_internal_locks by _after_fork()</span>
-        self<span style=color:#f92672>.</span>_cond<span style=color:#f92672>.</span>__init__(Lock())
-
-    <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>is_set</span>(self):
-        <span style=color:#e6db74>&#34;&#34;&#34;Return true if and only if the internal flag is true.&#34;&#34;&#34;</span>
-        <span style=color:#66d9ef>return</span> self<span style=color:#f92672>.</span>_flag
-
-    isSet <span style=color:#f92672>=</span> is_set
-</code></pre></div><p>Semaphore semaphore locks are also internally based on conditional locks to do the following.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Semaphore</span>:
-
-    <span style=color:#66d9ef>def</span> __init__(self, value<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>):
-        <span style=color:#66d9ef>if</span> value <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>0</span>:
-            <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(<span style=color:#e6db74>&#34;semaphore initial value must be &gt;= 0&#34;</span>)
-        self<span style=color:#f92672>.</span>_cond <span style=color:#f92672>=</span> Condition(Lock()) <span style=color:#75715e># As you can see, a conditional lock is instantiated here</span>
-        self<span style=color:#f92672>.</span>_value <span style=color:#f92672>=</span> value
-</code></pre></div><h3 id=basic-exercises>Basic Exercises</h3>
-<hr>
-<h4 id=application-of-conditional-locks>Application of conditional locks</h4>
-<p>Requirement: An empty list with two threads taking turns adding values to it (one adding an even number, one adding an odd number), so that the values in the list are 1 - 100, and are ordered.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-lst <span style=color:#f92672>=</span> []
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>even</span>():
-    <span style=color:#e6db74>&#34;&#34;&#34;Add even numbers&#34;&#34;&#34;&#34;</span>
-    <span style=color:#66d9ef>with</span> condLock:
-        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>101</span>, <span style=color:#ae81ff>2</span>):
-            <span style=color:#75715e># Determine if the current list is exhausted at length 2</span>
-            <span style=color:#75715e># If so, add an odd number</span>
-            <span style=color:#75715e># If not, add an even number</span>
-            <span style=color:#66d9ef>if</span> len(lst) <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#960050;background-color:#1e0010>!</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>:
-                <span style=color:#75715e># Add an even number</span>
-                lst<span style=color:#f92672>.</span>append(i) <span style=color:#75715e># Add the value first</span>
-                condLock<span style=color:#f92672>.</span>notify() <span style=color:#75715e># tell the other thread that you can add the odd number, but here you don&#39;t immediately hand over execution</span>
-                condLock<span style=color:#f92672>.</span>wait() <span style=color:#75715e># hand over execution rights and wait for another thread to notify to add an even number</span>
-            <span style=color:#66d9ef>else</span>:
-                <span style=color:#75715e># Add an odd number</span>
-                condLock<span style=color:#f92672>.</span>wait() <span style=color:#75715e># surrender execution rights and wait for another thread to notify to add an even number</span>
-                lst<span style=color:#f92672>.</span>append(i)    
-                condLock<span style=color:#f92672>.</span>notify()
-        condLock<span style=color:#f92672>.</span>notify()
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>odd</span>():
-    <span style=color:#e6db74>&#34;&#34;&#34;add odd numbers&#34;&#34;&#34;&#34;</span>
-    <span style=color:#66d9ef>with</span> condLock:
-        <span style=color:#66d9ef>for</span> i <span style=color:#f92672>in</span> range(<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>101</span>, <span style=color:#ae81ff>2</span>):
-            <span style=color:#66d9ef>if</span> len(lst) <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
-                lst<span style=color:#f92672>.</span>append(i)
-                condLock<span style=color:#f92672>.</span>notify()
-                condLock<span style=color:#f92672>.</span>wait()
-        condLock<span style=color:#f92672>.</span>notify()
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;__main__&#34;</span>:
-    condLock <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Condition()
-
-    addEvenTask <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>even)
-    addOddTask <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>
-
-    addEvenTask<span style=color:#f92672>.</span>start()
-    addOddTask<span style=color:#f92672>.</span>start()
-
-    addEvenTask<span style=color:#f92672>.</span>join()
-    addOddTask<span style=color:#f92672>.</span>join()
-
-    print(lst)
-</code></pre></div><h4 id=application-of-event-locks>Application of event locks</h4>
-<p>There are 2 task threads to play Li Bai and Du Fu, how can we make them reply to each other in one sentence? The text is as follows.</p>
-<pre tabindex=0><code>Du Fu: Old Li, come drink!
-
-Li Bai: Old Du, I can't drink anymore!
-
-Du Fu: Old Li, one more pot?
-
-Du Fu: ... old Li?
-
-Li Bai: Hoo hoo hoo... fell asleep...
-</code></pre><p>The code is as follows.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>import</span> threading
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>libai</span>():
-    event<span style=color:#f92672>.</span>wait()  
-    print(<span style=color:#e6db74>&#34;Li Bai: Lao Du ah, do not drink I can not drink!&#34;</span>)
-    event<span style=color:#f92672>.</span>set()
-    event<span style=color:#f92672>.</span>clear()
-    event<span style=color:#f92672>.</span>wait()
-    print(<span style=color:#e6db74>&#34;Li Bai: Hoo hoo hoo... Sleeping...&#34;</span>)
-
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>dufu</span>():
-    print(<span style=color:#e6db74>&#34;Dufu: Old Li, come drink!&#34;</span>)
-    event<span style=color:#f92672>.</span>set()  
-    event<span style=color:#f92672>.</span>clear()
-    event<span style=color:#f92672>.</span>wait()
-    print(<span style=color:#e6db74>&#34;Du Fu: Old Li ah, another pot?&#34;</span>)
-    print(<span style=color:#e6db74>&#34;Du Fu: ... Old Li?&#34;</span>)
-    event<span style=color:#f92672>.</span>set()
-
-<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;__main__&#39;</span>:
-
-    event <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Event()
-
-    t1 <span style=color:#f92672>=</span> threading<span style=color:#f92672>.</span>Thread(target<span style=color:#f92672>=</span>libai)
-    Thread(target<span style=color:#f92672>=</span>dufu)
-
-    t1<span style=color:#f92672>.</span>start()
-    t2<span style=color:#f92672>.</span>start()
-    t1<span style=color:#f92672>.</span>join()
-    t2<span style=color:#f92672>.</span>join()
-</code></pre></div><p>Original link: <a href=https://mp.weixin.qq.com/s/4PBaW4mT7tFhqcgurAM7-A>https://mp.weixin.qq.com/s/4PBaW4mT7tFhqcgurAM7-A</a></p>
+<h3 id=v-separation-of-static-and-dynamic>V. Separation of Static and Dynamic</h3>
+<p>Separation of dynamic and static is to let the dynamic web pages in the dynamic website according to certain rules to the unchanging resources and often change the resources to distinguish, dynamic and static resources to do a good job of splitting, we can do caching operations based on the characteristics of static resources, which is the core idea of the static website processing.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>upstream web_servers <span style=color:#f92672>{</span>  
+       server localhost:8081;  
+       server localhost:8082;  
+<span style=color:#f92672>}</span>
+
+server <span style=color:#f92672>{</span>
+    listen 80;
+    server_name localhost;
+
+    set $doc_root /usr/local/var/www;
+
+    location ~* <span style=color:#ae81ff>\.</span> <span style=color:#f92672>(</span>gif|jpg|jpeg|png|bmp|ico|swf|css|js<span style=color:#f92672>)</span>$ <span style=color:#f92672>{</span>
+       root $doc_root/img;
+    <span style=color:#f92672>}</span>
+
+    location / <span style=color:#f92672>{</span>
+        proxy_pass http://web_servers;
+        <span style=color:#75715e># Header Host must be specified</span>
+        proxy_set_header Host $host:$server_port;
+    host $host:$server_port; <span style=color:#f92672>}</span>
+
+    error_page <span style=color:#ae81ff>500</span> <span style=color:#ae81ff>502</span> <span style=color:#ae81ff>503</span> <span style=color:#ae81ff>504</span> /50x.html;  
+    location <span style=color:#f92672>=</span> /50x.html <span style=color:#f92672>{</span>  
+        root $doc_root;
+    <span style=color:#f92672>}</span>
+
+ <span style=color:#f92672>}</span>
+</code></pre></div><hr>
+<h3 id=vi-others>VI. Others</h3>
+<h4 id=1-return-directive>1. return directive</h4>
+<p>Return the http status code and optionally the second parameter can be the redirect URL</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>location /permanently/moved/url <span style=color:#f92672>{</span>
+    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>301</span> http://www.example.com/moved/here;
+<span style=color:#f92672>}</span>
+</code></pre></div><h4 id=2-rewrite-directive>2. rewrite directive</h4>
+<p>The rewrite URI request rewrite, which modifies the request URI multiple times during request processing by using the rewrite directive, has one optional parameter and two required parameters.</p>
+<p>The first (required) parameter is a regular expression that the request URI must match.</p>
+<p>The second parameter is the URI used to replace the matching URI.</p>
+<p>The optional third parameter is a flag that can stop further processing of the rewrite directive or send a redirect (code 301 or 302)</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>location /users/ <span style=color:#f92672>{</span>
+    rewrite ^/users/<span style=color:#f92672>(</span>. *<span style=color:#f92672>)</span>$ /show?user<span style=color:#f92672>=</span>$1 break;
+<span style=color:#f92672>}</span>
+</code></pre></div><h4 id=3-error_page-directive>3. error_page directive</h4>
+<p>Using the error_page directive, you can configure NGINX to return a custom page with an error code, replace other error codes in the response, or redirect the browser to another URI. in the following example, the error_page directive specifies the page (/404.html) that will return the 404 page error code.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>error_page <span style=color:#ae81ff>404</span> /404.html;
+</code></pre></div><h4 id=4-logs>4. logs</h4>
+<p>Access log: need to turn on compression gzip on; otherwise no log file is generated, open log_format, access_log comments</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>log_format main <span style=color:#e6db74>&#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;</span>
+                      <span style=color:#e6db74>&#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;</span>
+                      <span style=color:#e6db74>&#39; &#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34; &#39;</span>
+
+access_log /usr/local/etc/nginx/logs/host.access.log main;
+
+gzip on. 5;
+</code></pre></div><h4 id=5-deny-command>5. deny command</h4>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=color:#75715e># Deny access to a directory</span>
+location ~* <span style=color:#ae81ff>\.</span> <span style=color:#f92672>(</span>txt|doc<span style=color:#f92672>)</span><span style=color:#e6db74>${</span>
+    root $doc_root;
+    deny all;
+<span style=color:#e6db74>}</span>   
+</code></pre></div><h4 id=6-built-in-variables>6. Built-in variables</h4>
+<p>The built-in variables that can be used in nginx configuration files start with the dollar sign $, and are also called global variables by some people. The values of some of these predefined variables can be changed. Also, pay attention to the Java Voice public page, reply to &ldquo;back-end interview&rdquo;, and you will be sent a treasure trove of interview questions!</p>
+<ul>
+<li><code>$args</code>: # This variable is equal to the parameter in the request line, same as $query_string</li>
+<li><code>$content_length</code> : The Content-length field in the request header.</li>
+<li><code>$content_type</code> : The Content-Type field in the request header.</li>
+<li><code>$document_root</code> : The value specified in the root directive for the current request.</li>
+<li><code>$host</code> : The request host header field, otherwise it is the server name.</li>
+<li><code>$http_user_agent</code> : client-side agent information</li>
+<li><code>$http_cookie</code> : client-side cookie information</li>
+<li><code>$limit_rate</code> : This variable can limit the connection rate.</li>
+<li><code>$request_method</code> : The action requested by the client, usually GET or POST.</li>
+<li><code>$remote_addr</code> : IP address of the client.</li>
+<li><code>$remote_port</code> : The port of the client.</li>
+<li><code>$remote_user</code> : The user name that has been authenticated by Auth Basic Module.</li>
+<li><code>$request_filename</code> : The path of the current request file, generated by the root or alias directive with the URI request.</li>
+<li><code>$scheme</code> : HTTP method (e.g. http, https).</li>
+<li><code>$server_protocol</code> : The protocol used for the request, usually HTTP/1.0 or HTTP/1.1.</li>
+<li><code>$server_addr</code> : The server address, this value can be determined after a system call is completed.</li>
+<li><code>$server_name</code> : The name of the server.</li>
+<li><code>$server_port</code> : The port number on which the request reaches the server.</li>
+<li><code>$request_uri</code> : The original URI containing the request parameters, without the host name, e.g. <code>/foo/bar.php?arg=baz</code>.</li>
+<li><code>$uri</code> : The current URI without request parameters, $uri does not contain the host name, e.g. <code>/foo/bar.html</code>.</li>
+<li><code>$document_uri</code> : Same as <code>$uri</code></li>
+</ul>
+<p>Source: <a href=https://mp.weixin.qq.com/s/_J7gUOJK6JWYnkIb4AYK2Q>https://mp.weixin.qq.com/s/_J7gUOJK6JWYnkIb4AYK2Q</a></p>
 <hr>
 </div>
 <div class=mb-3>
 <h5 class="d-inline-block mr-3">Tags:</h5>
 <ul class="list-inline d-inline-block">
-<li class=list-inline-item><a class=text-color href=https://codelink.ai/tags/multi-threading>multi-threading</a>,</li>
+<li class=list-inline-item><a class=text-color href=https://codelink.ai/tags/nginx>nginx</a>,</li>
 </ul>
 </div>
 <div class=mt-5>
