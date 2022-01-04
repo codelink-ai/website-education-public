@@ -155,12 +155,12 @@ http <span style=color:#f92672>{</span>
 </blockquote>
 <h4 id=4-command-introduction>4. Command Introduction</h4>
 <ul>
-<li>server : used to define the service, there can be multiple server blocks in http</li>
-<li>listen : Specify the IP address and port for the server to listen to requests, if the address is omitted, the server will listen to all addresses, if the port is omitted, the standard port is used</li>
-<li>server_name : the name of the service, used to configure the domain name</li>
-<li>location : The configuration corresponding to the mapped path uri, a server can have multiple locations, location followed by a uri, can be a regular expression, / means match any path, when the client accesses the path meets this uri will execute the code inside the location block</li>
-<li>root : root path, when visit <code>http://localhost/test.html</code>, &ldquo;<code>/test.html</code>&rdquo; will match to &ldquo;/&rdquo; uri, find root as <code>/usr/local/</code> <code>var/www/html</code>, the user accesses the resource physical address = root + uri = <code>/usr/local/var/www/html</code> + <code>/test.html</code> = <code>/usr/local/var/www/html/test.html</code></li>
-<li>index : set the home page, when only access server_name without any path behind is not to go root directly to the index command; if the access path does not specify a specific file, then return the index set resources, if you visit <code>http://localhost/html/</code> then the default return index.html</li>
+<li><code>server</code> : used to define the service, there can be multiple server blocks in http</li>
+<li><code>listen</code> : Specify the IP address and port for the server to listen to requests, if the address is omitted, the server will listen to all addresses, if the port is omitted, the standard port is used</li>
+<li><code>server_name</code> : the name of the service, used to configure the domain name</li>
+<li><code>location</code> : The configuration corresponding to the mapped path uri, a server can have multiple locations, location followed by a uri, can be a regular expression, / means match any path, when the client accesses the path meets this uri will execute the code inside the location block</li>
+<li><code>root</code> : root path, when visit <code>http://localhost/test.html</code>, &ldquo;<code>/test.html</code>&rdquo; will match to &ldquo;/&rdquo; uri, find root as <code>/usr/local/</code> <code>var/www/html</code>, the user accesses the resource physical address = root + uri = <code>/usr/local/var/www/html</code> + <code>/test.html</code> = <code>/usr/local/var/www/html/test.html</code></li>
+<li><code>index</code> : set the home page, when only access server_name without any path behind is not to go root directly to the index command; if the access path does not specify a specific file, then return the index set resources, if you visit <code>http://localhost/html/</code> then the default return index.html</li>
 </ul>
 <h4 id=5-location-uri-regular-expression>5. location uri regular expression</h4>
 <ul>
