@@ -169,7 +169,7 @@ http <span style=color:#ff79c6>{</span>
     <span style=color:#ff79c6>}</span>
 <span style=color:#ff79c6>}</span>
 </code></pre></div><h4 id=3-access-test>3. Access test</h4>
-<p><code>http://localhost/</code> points to <code>/usr/local/var/www/index.html</code>, index.html is the html that comes with nginx installation
+<p><code>http://localhost/</code> points to <code>/usr/local/var/www/index.html</code>, index.html is the html that comes with nginx installation<br>
 <code>http://localhost/test.html</code> points to <code>/usr/local/var/www/html/test.html</code></p>
 <blockquote>
 <p>Note: If you get 403 Forbidden errors when accessing images, it may be because the first line of nginx.conf user configuration is not correct, the default is #user nobody; it is commented out, change it to user root under linux; change it to user username group under macos; then reload the configuration file or reboot and try again. The user name can be checked by who am i command.</p>
@@ -471,7 +471,7 @@ location ~* <span style=color:#f1fa8c>\.</span> <span style=color:#ff79c6>(</spa
 <li><code>$uri</code> : The current URI without request parameters, $uri does not contain the host name, e.g. <code>/foo/bar.html</code>.</li>
 <li><code>$document_uri</code> : Same as <code>$uri</code></li>
 </ul>
-<p>Source: <a href=https://mp.weixin.qq.com/s/_J7gUOJK6JWYnkIb4AYK2Q>https://mp.weixin.qq.com/s/_J7gUOJK6JWYnkIb4AYK2Q</a></p>
+<p><a href=https://mp.weixin.qq.com/s/_J7gUOJK6JWYnkIb4AYK2Q>Source</a></p>
 <hr>
 </div>
 <div class=mb-3>

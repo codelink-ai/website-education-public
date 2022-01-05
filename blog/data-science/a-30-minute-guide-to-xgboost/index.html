@@ -172,16 +172,16 @@
 <p>The following is a general introduction to the principle of xgboost from three perspectives: assumption space, objective function, and optimization algorithm.</p>
 <h4 id=1-hypothesis-space>1. Hypothesis space</h4>
 <p>
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/2.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/3.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/2.webp onerror="this.onerror=null,this.src=''" alt="post thumb"><br>
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/3.webp onerror="this.onerror=null,this.src=''" alt="post thumb"><br>
 <img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/4.webp onerror="this.onerror=null,this.src=''" alt="post thumb"></p>
 <h4 id=2-objective-function>2. Objective function</h4>
 <p>
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/5.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/5.webp onerror="this.onerror=null,this.src=''" alt="post thumb"><br>
 <img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/6.webp onerror="this.onerror=null,this.src=''" alt="post thumb"></p>
 <h4 id=3-optimization-algorithm>3. Optimization algorithm</h4>
 <p>The basic idea: greedy method, learning tree by tree, each tree fits the deviation of the previous model.</p>
-<p>Third, the first t trees to learn what?
+<p>Third, the first t trees to learn what?<br>
 To finish building the xgboost model, we need to determine some of the following things.</p>
 <ol>
 <li>
@@ -193,9 +193,9 @@ To finish building the xgboost model, we need to determine some of the following
 </ol>
 <p>We first consider the problem of how to boost, and then solve the problem of how to take the values of the split leaf nodes.</p>
 <p>
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/7.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/8.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/9.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/7.webp onerror="this.onerror=null,this.src=''" alt="post thumb"><br>
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/8.webp onerror="this.onerror=null,this.src=''" alt="post thumb"><br>
+<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/9.webp onerror="this.onerror=null,this.src=''" alt="post thumb"><br>
 <img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/data-science/a-30-minute-guide-to-xgboost/img/10.webp onerror="this.onerror=null,this.src=''" alt="post thumb"></p>
 <h3 id=4-how-to-generate-the-tth-tree>4. How to generate the tth tree?</h3>
 <hr>
@@ -348,7 +348,7 @@ bst<span style=color:#ff79c6>.</span>save_model(model_dir)
 bst_loaded <span style=color:#ff79c6>=</span> xgb<span style=color:#ff79c6>.</span>Booster(model_file<span style=color:#ff79c6>=</span>model_dir)
 
 printlog(<span style=color:#f1fa8c>&#34;task end...&#34;</span>)
-</code></pre></div><p>Source: <a href=https://mp.weixin.qq.com/s/eAVcbnsh9zzVnlOFz9w5Dw>https://mp.weixin.qq.com/s/eAVcbnsh9zzVnlOFz9w5Dw</a></p>
+</code></pre></div><p><a href=https://mp.weixin.qq.com/s/eAVcbnsh9zzVnlOFz9w5Dw>Source</a></p>
 <hr>
 </div>
 <div class=mb-3>
