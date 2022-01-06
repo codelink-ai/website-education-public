@@ -93,14 +93,32 @@
 <li class=nav-item>
 <a class=nav-link href=https://codelink.ai/about>About</a>
 </li>
-<li class=nav-item>
-<a class=nav-link href=https://codelink.ai/service>Service</a>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+Service
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=https://codelink.ai/service/>All Services</a>
+<a class=dropdown-item href=https://codelink.ai/service/web-and-mobile-apps>Mobile & Web Apps</a>
+<a class=dropdown-item href=https://codelink.ai/service/trainings>Trainings & Bootcamps</a>
+<a class=dropdown-item href=https://codelink.ai/service/devops>Trouble Shooting & Devops</a>
+</div>
 </li>
 <li class=nav-item>
 <a class=nav-link href=https://codelink.ai/project>Portfolio</a>
 </li>
-<li class=nav-item>
-<a class=nav-link href=https://codelink.ai/blog>Blog</a>
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href=# role=button data-toggle=dropdown aria-haspopup=true aria-expanded=false>
+Blog
+</a>
+<div class=dropdown-menu>
+<a class=dropdown-item href=https://codelink.ai/blog/>All Posts</a>
+<a class=dropdown-item href=https://codelink.ai/categories/data-science/>Data Science</a>
+<a class=dropdown-item href=https://codelink.ai/categories/python/>Python</a>
+<a class=dropdown-item href=https://codelink.ai/categories/web-development/>Web Development</a>
+<a class=dropdown-item href=https://codelink.ai/categories/mobile-development/>Mobile Development</a>
+<a class=dropdown-item href=https://codelink.ai/categories/devops/>Devops</a>
+</div>
 </li>
 </ul>
 <div class="search px-4">
@@ -151,7 +169,7 @@
 <h3 id=i-http-server>I. HTTP server</h3>
 <p>Nginx itself is also a static resource server. When there are only static resources, you can use Nginx to be a server, if a website is only a static page, then it can be deployed in this way.</p>
 <h4 id=1-first-in-the-document-root-directory-docroot-usrlocalvarwww-to-create-html-directory-and-then-in-the-html-put-a-testhtml>1. first in the document root directory Docroot (<code>/usr/local/var/www</code>) to create html directory, and then in the html put a test.html;</h4>
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/devops/five-application-scenarios-for-understanding-nginx-thoroughly/img/1.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:7px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/devops/five-application-scenarios-for-understanding-nginx-thoroughly/img/1.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
 <h4 id=2-configure-the-server-in-nginxconf>2. configure the server in nginx.conf</h4>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>user mengday staff;
 
@@ -206,7 +224,7 @@ http <span style=color:#ff79c6>{</span>
 <ol>
 <li>Create images and img directories under <code>/usr/local/var/www</code>, and put a <code>test.jpg</code> under each directory respectively.</li>
 </ol>
-<img loading=lazy style="box-shadow:0 0 5px grey" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/devops/five-application-scenarios-for-understanding-nginx-thoroughly/img/2.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:7px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/devops/five-application-scenarios-for-understanding-nginx-thoroughly/img/2.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>http <span style=color:#ff79c6>{</span>
     server <span style=color:#ff79c6>{</span>
         listen 80;
@@ -523,6 +541,7 @@ location ~* <span style=color:#f1fa8c>\.</span> <span style=color:#ff79c6>(</spa
 <ul class="list-styled style-circle">
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/data-science class="text-color d-block pb-3 mt-3 text-decoration-none">Data science</a></li>
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/devops class="text-color d-block pb-3 mt-3 text-decoration-none">Devops</a></li>
+<li class="border-bottom border-color"><a href=https://codelink.ai/categories/mobile-development class="text-color d-block pb-3 mt-3 text-decoration-none">Mobile development</a></li>
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/python class="text-color d-block pb-3 mt-3 text-decoration-none">Python</a></li>
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/web-development class="text-color d-block pb-3 mt-3 text-decoration-none">Web development</a></li>
 </ul>
@@ -582,13 +601,13 @@ location ~* <span style=color:#f1fa8c>\.</span> <span style=color:#ff79c6>(</spa
 <div class="col-6 mb-5">
 <h4 class="text-white mb-4">Services</h4>
 <ul class=list-styled>
-<li class="mb-3 text-light"><a class="text-light d-block" href=https://codelink.ai/service/data-science/>Advanced Data Science</a>
+<li class="mb-3 text-light"><a class="text-light d-block" href=https://codelink.ai/service/data-science/>Data Science</a>
 </li>
 <li class="mb-3 text-light"><a class="text-light d-block" href=https://codelink.ai/service/web-and-mobile-apps/>Mobile & Web Apps</a>
 </li>
-<li class="mb-3 text-light"><a class="text-light d-block" href=https://codelink.ai/service/trainings/>Trainings & Bootcamps</a>
+<li class="mb-3 text-light"><a class="text-light d-block" href=https://codelink.ai/service/devops/>Devops</a>
 </li>
-<li class="mb-3 text-light"><a class="text-light d-block" href=https://codelink.ai/service/devops/>Trouble Shooting & Devops</a>
+<li class="mb-3 text-light"><a class="text-light d-block" href=https://codelink.ai/service/trainings/>Trainings & Bootcamps</a>
 </li>
 </ul>
 </div>
