@@ -99,6 +99,7 @@ Service
 </a>
 <div class=dropdown-menu>
 <a class=dropdown-item href=https://codelink.ai/service/>All Services</a>
+<a class=dropdown-item href=https://codelink.ai/service/data-science/>Data Science </a>
 <a class=dropdown-item href=https://codelink.ai/service/web-and-mobile-apps>Mobile & Web Apps</a>
 <a class=dropdown-item href=https://codelink.ai/service/trainings>Trainings & Bootcamps</a>
 <a class=dropdown-item href=https://codelink.ai/service/devops>Trouble Shooting & Devops</a>
@@ -166,7 +167,7 @@ Blog
 <div class=content>
 <hr>
 <p>Saleor is a fast-growing open source e-commerce platform based on Python and Django, and is constantly being updated, so don&rsquo;t worry about the old version.</p>
-<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:7px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/1.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:5px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/1.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
 <p>It has the following features:</p>
 <ol>
 <li><strong>GraphQL API</strong>: GraphQL-based implementation of the front and back end separation , belonging to the cutting-edge technology .</li>
@@ -215,11 +216,11 @@ docker-compose run --rm api python3 manage.py collectstatic --noinput
 <p>Run Saleor with the following command:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>docker-compose up
 </code></pre></div>
-<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:7px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/2.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:5px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/2.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
 <h3 id=2-introduction-to-the-architecture>2. Introduction to the architecture</h3>
 <hr>
 <p>If you want to develop based on Saleor, then you must understand its architecture.</p>
-<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:7px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/3.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:5px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/3.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
 <p>Saleor consists of three important components.</p>
 <ol>
 <li>
@@ -246,7 +247,7 @@ docker-compose run --rm api python3 manage.py collectstatic --noinput
 </li>
 </ol>
 <p>Below we describe how to develop extensions based on plugins.</p>
-<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:7px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/4.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
+<img loading=lazy style="box-shadow:0 0 5px grey;border-radius:5px" class="img-fluid d-block mx-auto" src=https://codelink.ai/blog/python/deploy-a-gorgeous-python-open-source-e-commerce-project-saleor/img/4.webp onerror="this.onerror=null,this.src=''" alt="post thumb">
 <p>As shown above, Saleor Core provides a callback notification event to the plug-in, based on which the plug-in can perform related operations and interact with the database.</p>
 <p>To develop a plug-in, you must inherit the BasePlugin base class and override some of the methods, such as the following example, which overrides the <code>postprocess_order_creation</code> method to add some operations to the order creation process.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#6272a4># Python Utility Dictionary</span>
