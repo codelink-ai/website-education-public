@@ -1,0 +1,57 @@
+{
+	"folders": [
+		{
+			"name": "maney-mobile",
+			"path": "../../../../../maney-mobile"
+		},
+		{
+			"name": "maney-backend",
+			"path": "../../../../../maney-backend"
+		},
+		{
+			"name": "python-ffmpeg",
+			"path": "../../../../../python-ffmpeg"
+		},
+		{
+			"name": "streamlit-app-test",
+			"path": "../../../../../streamlit-app-test"
+		},
+		{
+			"name": "crypto-forecast",
+			"path": "../../../../../crypto-forecast"
+		},
+		{
+			"name": "jupyterlite",
+			"path": "../../../../../jupyterlite"
+		},
+		{
+			"name": "spidertools",
+			"path": "../../../../../spidertools"
+		},
+		{
+			"name": "vim.so",
+			"path": "../../../../../vim.so"
+		},
+		{
+			"name": "fastapi-react",
+			"path": "../../../../../fastapi-react"
+		},
+		{
+			"name": "python-web-console",
+			"path": "../../../../../python-web-console"
+		},
+		{
+			"path": "../../../../../fastapi-vue-learn"
+		},
+		{
+			"path": "../../../../../fastapi-react-learn"
+		},
+		{
+			"path": "../../../../../code-run"
+		},
+		{
+			"path": "../../../../../codepan"
+		}
+	],
+	"settings": {}
+}
