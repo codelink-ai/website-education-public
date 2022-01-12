@@ -203,7 +203,7 @@ Blog
 <hr>
 <p>Like the other modules, Flask is easy to install with the following package manager via pip</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>pip install flask
-</code></pre></div><p>To check if the installation is correct, type <code>python</code> at the command line to enter command line mode.<br>
+</code></pre></div><p>To check if the installation is correct, type <code>python</code> at the command line to enter command line mode.
 Introduce the <code>flask</code> module, enter</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#ff79c6>import</span> flask
 </code></pre></div><p>If there is no error alert, it means the installation is successful</p>
@@ -354,7 +354,7 @@ app <span style=color:#ff79c6>=</span> Flask(__name__) <span style=color:#6272a4
 </table>
 <p>Before you can use the <code>request</code> object, you need to introduce the</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#ff79c6>from</span> flash <span style=color:#ff79c6>import</span> request
-</code></pre></div><p>The <code>request</code> object provides a rich set of properties and methods, as an example here.<br>
+</code></pre></div><p>The <code>request</code> object provides a rich set of properties and methods, as an example here.
 The current request method can be manipulated by using the <code>method</code> property, and form data (data transferred in a <code>POST</code> or <code>PUT</code> request) can be handled by using the <code>form</code> property. Here is an example of using the above two properties:</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>@app<span style=color:#ff79c6>.</span>route(<span style=color:#f1fa8c>&#39;/login&#39;</span>, methods<span style=color:#ff79c6>=</span>[<span style=color:#f1fa8c>&#39;POST&#39;</span>, <span style=color:#f1fa8c>&#39;GET&#39;</span>])
 <span style=color:#ff79c6>def</span> <span style=color:#50fa7b>login</span>():
@@ -373,7 +373,7 @@ The current request method can be manipulated by using the <code>method</code> p
 </blockquote>
 <p>If you want to manipulate the parameters submitted in the URL (e.g. ?key=value) you can use the args property, e.g. : <code>searchword = request.args.get('key', '')</code></p>
 <h3 id=request-hooks>Request hooks</h3>
-<p>Sometimes it can be useful to execute code before or after the request is processed. For example, at the beginning of a request, it may be necessary to create a database connection or authenticate the user who initiated the request. To avoid using duplicate code in every view function, Flask provides the ability to register generic functions that can be called before or after the request is distributed to the view function.<br>
+<p>Sometimes it can be useful to execute code before or after the request is processed. For example, at the beginning of a request, it may be necessary to create a database connection or authenticate the user who initiated the request. To avoid using duplicate code in every view function, Flask provides the ability to register generic functions that can be called before or after the request is distributed to the view function.
 Request hooks are implemented using modifiers. flask supports the following 4 types of hooks:</p>
 <ul>
 <li><code>before_first_request</code>: Register a function to be run before the first request is processed.</li>
@@ -381,17 +381,17 @@ Request hooks are implemented using modifiers. flask supports the following 4 ty
 <li><code>after_request</code>: Register a function to run after each request if no unhandled exceptions are thrown.</li>
 <li><code>teardown_request</code>: register a function to be run after each request even if there are unhandled exceptions thrown.</li>
 </ul>
-<p>Example:<br>
+<p>Example:
 On receiving the first request, print the sentence.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>@app<span style=color:#ff79c6>.</span>before_first_request
 <span style=color:#ff79c6>def</span> <span style=color:#50fa7b>first_quest</span>():
     <span style=color:#8be9fd;font-style:italic>print</span>(<span style=color:#f1fa8c>&#34;run before first request&#34;</span>)
-</code></pre></div><p><strong>Sharing data between request hook functions and view functions generally uses the context global variable g.</strong>.<br>
+</code></pre></div><p><strong>Sharing data between request hook functions and view functions generally uses the context global variable g.</strong>.
 For example, the before_request handler may load the logged-in user from the database and save it to g.user. When the view function is subsequently called, the view function then uses g.user to get the user.</p>
 <h3 id=response>Response</h3>
 <p>A response is a response from the web server to a request, and in Flask, there are several forms of responses. The return value of a view function is automatically converted into a response object.</p>
 <p>If the return value is a string, it is converted to a response object containing a string as the response body, a 200 OK error code, and a <code>text/html</code> type response object.</p>
-<p>If the return value is a dictionary, then <code>jsonify()</code> is called to generate a response.<br>
+<p>If the return value is a dictionary, then <code>jsonify()</code> is called to generate a response.
 The following are the rules for conversion.</p>
 <ul>
 <li>If the view returns a response object, then it is returned directly.</li>

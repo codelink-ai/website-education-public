@@ -218,8 +218,8 @@ Blog
 <p>Execute without interruption in the background. /test.sh, stdout is output to <code>out.log</code>, <code>stderr</code> is output to <code>err.log</code></p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>nohup . /test.sh &gt; out.log 2&gt;err.log &amp;
 </code></pre></div><p>The meaning of the associated numbers is as follows.</p>
-<p>0 - <strong><code>stdin</code></strong> (standard input).<br>
-1 - <strong><code>stdout</code></strong> (standard output), obviously nohup command > out.log is equivalent to nohup command 1> out.log, which is the default behavior.<br>
+<p>0 - <strong><code>stdin</code></strong> (standard input).
+1 - <strong><code>stdout</code></strong> (standard output), obviously nohup command > out.log is equivalent to nohup command 1> out.log, which is the default behavior.
 2 - <strong><code>stderr</code></strong> (standard error)</p>
 <p>You may also see this written in such a way that it means that stderr is also redirected to stdin</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>nohup . /test.sh &gt; out.log 2&gt;&amp;<span style=color:#bd93f9>1</span> &amp;
