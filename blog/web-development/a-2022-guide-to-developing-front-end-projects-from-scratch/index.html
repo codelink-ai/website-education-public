@@ -6,7 +6,7 @@
 <meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=5">
 <meta name=description content="This article is about manually configuring a front-end project from scratch, which will involve Webpack, React, Babel, TypeScript, Ant Design, Sass, Eslint, Prettier.">
 <meta name=author content="Admin">
-<meta name=generator content="Hugo 0.88.1">
+<meta name=generator content="Hugo 0.92.0">
 <link rel=manifest href=https://codelink.ai/index.webmanifest>
 <meta name=msapplication-TileColor content="#18BC9D">
 <meta name=theme-color content="#fff">
@@ -218,11 +218,11 @@ Blog
 module.exports <span style=color:#ff79c6>=</span> {
   entry<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;./src/main.js&#39;</span>,
   output<span style=color:#ff79c6>:</span> {
-    path<span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>),
+    path<span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>),
     filename<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;bundle.js&#39;</span>
   },
   devServer<span style=color:#ff79c6>:</span> {
-    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>)
+    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>)
   }
 }
 </code></pre></div><p>Create the corresponding file above.</p>
@@ -301,7 +301,7 @@ ReactDOM.render(
 module.exports <span style=color:#ff79c6>=</span> {
   entry<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;./src/main.js&#39;</span>,
   output<span style=color:#ff79c6>:</span> {
-    path<span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>),
+    path<span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>),
     filename<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;bundle.js&#39;</span>
   },
   module<span style=color:#ff79c6>:</span> {
@@ -316,14 +316,14 @@ module.exports <span style=color:#ff79c6>=</span> {
     ],
   },
   devServer<span style=color:#ff79c6>:</span> {
-    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>)
+    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>)
   }
 }
 </code></pre></div><p>Then let&rsquo;s install @babel/preset-react to convert the jsx syntax.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm i -D @babel/preset-react
 </code></pre></div><p>Create a new babel configuration file, <code>babel.config.json</code>, in the root directory.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>// babel.config.json
-{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#6272a4>// babel.config.json
+</span><span style=color:#6272a4></span>{
     <span style=color:#ff79c6>&#34;presets&#34;</span>: [
         <span style=color:#f1fa8c>&#34;@babel/preset-react&#34;</span>
     ]
@@ -333,8 +333,8 @@ module.exports <span style=color:#ff79c6>=</span> {
 <p><code>@babel/preset-env</code> contains many new ES features, and core-js implements ployfill, so with these two babel features you can use all the latest ES features with confidence, and if you don&rsquo;t meet them we can configure the babel plugin separately.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm i -D @babel/preset-env core-js
 </code></pre></div><p>Then we&rsquo;ll modify the babel configuration file.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>// babel.config.json
-{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#6272a4>// babel.config.json
+</span><span style=color:#6272a4></span>{
     <span style=color:#ff79c6>&#34;presets&#34;</span>: [
         [
             <span style=color:#f1fa8c>&#34;@babel/preset-env&#34;</span>,
@@ -359,8 +359,8 @@ module.exports <span style=color:#ff79c6>=</span> {
 <p>First install TypeScript and type for React.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm i -D typescript @types/react @types/react-dom
 </code></pre></div><p>Create a new <code>tsconfig.json</code> in the root directory for the ts configuration.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>// tsconfig.json
-{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#6272a4>// tsconfig.json
+</span><span style=color:#6272a4></span>{
     <span style=color:#ff79c6>&#34;compilerOptions&#34;</span>: {
         <span style=color:#ff79c6>&#34;target&#34;</span>: <span style=color:#f1fa8c>&#34;es5&#34;</span>,
         <span style=color:#ff79c6>&#34;module&#34;</span>: <span style=color:#f1fa8c>&#34;commonjs&#34;</span>,
@@ -405,8 +405,8 @@ ReactDOM.render(
 </code></pre></div><p>The next step is to configure babel, install @babel/preset-typescript, and convert our code from ts to js.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>npm i -D @babel/preset-typescript
 </code></pre></div><p>Add it to the babel configuration file.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>// babel.config.json
-{
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json><span style=color:#6272a4>// babel.config.json
+</span><span style=color:#6272a4></span>{
     <span style=color:#ff79c6>&#34;presets&#34;</span>: [
         <span style=color:#f1fa8c>&#34;@babel/preset-typescript&#34;</span>,
         [
@@ -426,7 +426,7 @@ ReactDOM.render(
 module.exports <span style=color:#ff79c6>=</span> {
   entry<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;./src/main.tsx&#39;</span>,
   output<span style=color:#ff79c6>:</span> {
-    path<span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>),
+    path<span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>),
     filename<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;bundle.js&#39;</span>
   },
   module<span style=color:#ff79c6>:</span> {
@@ -445,7 +445,7 @@ module.exports <span style=color:#ff79c6>=</span> {
 </span><span style=color:#6272a4></span>    extensions<span style=color:#ff79c6>:</span> [<span style=color:#f1fa8c>&#39;.tsx&#39;</span>, <span style=color:#f1fa8c>&#39;.ts&#39;</span>, <span style=color:#f1fa8c>&#39;.jsx&#39;</span>, <span style=color:#f1fa8c>&#39;.js&#39;</span>],
   },
   devServer<span style=color:#ff79c6>:</span> {
-    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>)
+    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;./dist&#39;</span>)
   }
 }
 </code></pre></div><p>We can install typescript globally to facilitate type checking with the tsc command.</p>
@@ -537,7 +537,7 @@ ReactDOM.render(
 module.exports <span style=color:#ff79c6>=</span> {
   entry<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;. /src/main.tsx&#39;</span>,
   output<span style=color:#ff79c6>:</span> {
-    path<span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;. /dist&#39;</span>),
+    path<span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;. /dist&#39;</span>),
     filename<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;bundle.js&#39;</span>,
   },
   module<span style=color:#ff79c6>:</span> {
@@ -571,7 +571,7 @@ module.exports <span style=color:#ff79c6>=</span> {
 </span><span style=color:#6272a4></span>    extensions<span style=color:#ff79c6>:</span> [<span style=color:#f1fa8c>&#39;.tsx&#39;</span>, <span style=color:#f1fa8c>&#39;.ts&#39;</span>, <span style=color:#f1fa8c>&#39;.jsx&#39;</span>, <span style=color:#f1fa8c>&#39;.js&#39;</span>],
   },
   devServer<span style=color:#ff79c6>:</span> {
-    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(<span style=color:#bd93f9>__</span>dirname, <span style=color:#f1fa8c>&#39;. /dist&#39;</span>),
+    <span style=color:#ff79c6>static</span><span style=color:#ff79c6>:</span> path.resolve(__dirname, <span style=color:#f1fa8c>&#39;. /dist&#39;</span>),
   },
 };
 </code></pre></div><p>Add a few class names to <code>App.jsx</code> and introduce <code>App.scss</code>.</p>
@@ -838,7 +838,6 @@ module.exports <span style=color:#ff79c6>=</span> {
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/data-science class="text-color d-block pb-3 mt-3 text-decoration-none">Data science</a></li>
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/devops class="text-color d-block pb-3 mt-3 text-decoration-none">Devops</a></li>
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/mobile-development class="text-color d-block pb-3 mt-3 text-decoration-none">Mobile development</a></li>
-<li class="border-bottom border-color"><a href=https://codelink.ai/categories/performance class="text-color d-block pb-3 mt-3 text-decoration-none">Performance</a></li>
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/python class="text-color d-block pb-3 mt-3 text-decoration-none">Python</a></li>
 <li class="border-bottom border-color"><a href=https://codelink.ai/categories/web-development class="text-color d-block pb-3 mt-3 text-decoration-none">Web development</a></li>
 </ul>
