@@ -281,7 +281,7 @@ func <span style=color:#ff79c6>=</span> IAmFakeDecorator(func)
     <span style=color:#ff79c6>return</span> wrapper
 
 </code></pre></div><h4 id=313-problems-with-parameter-settings>3.1.3 Problems with parameter settings</h4>
-<p>The purpose of setting internal function parameters to <code>(*args, **kw)</code> is to be able to receive <strong>arbitrary arguments</strong>. The content of how to receive arbitrary arguments is described in the previous <a href=ref>function parameters</a> section has been described.</p>
+<p>The purpose of setting internal function parameters to <code>(*args, **kw)</code> is to be able to receive <strong>arbitrary arguments</strong>. The content of how to receive arbitrary arguments is described in the previous <a style=color:#18bc9d href=ref>function parameters</a> section has been described.</p>
 <p>The reason why we want <code>wrapper</code> to be able to take arbitrary arguments is that when we define the decorator we don&rsquo;t know what function it will be used to decorate and what the arguments of the specific function will be; defining it as &ldquo;can take arbitrary arguments&rdquo; can greatly enhance the adaptability of the code.</p>
 <p>Also, note the location of the given parameters.</p>
 <p>To clarify the concept: once the function parameters are given elsewhere than in the function header, the meaning of the expression is no longer &ldquo;<strong>a function object</strong>&rdquo;, but &ldquo;<strong>one function call</strong>&rdquo;.</p>
@@ -365,12 +365,12 @@ func <span style=color:#ff79c6>=</span> f1(arg)(f2(func))
 <p>This article introduces the decorator feature in Python, explaining in detail how it works and how to use it, which can greatly help learners master the knowledge of decorators, reduce the resistance to reading Python code, and write more pythonic code.</p>
 <hr>
 <p>Reference</p>
-<p>[1] <a href=https://docs.python.org/3/glossary.html#term-decorator target=_blank rel=noopener>Python3 Glossary - Decorators</a></p>
-<p>[2] <a href=https://docs.python.org/3/reference/compound_stmts.html#function-definitions target=_blank rel=noopener>Python3 Documentation - Compound Statements - Function Definitions</a></p>
-<p>[3] <a href=https://docs.python.org/3/reference/compound_stmts.html#class-definitions target=_blank rel=noopener>Python3 Documentation - Compound Statements - Class Definitions</a></p>
-<p>[4] <a href="https://baike.baidu.com/item/%e8%af%ad%e6%b3%95%e7%b3%96/5247005?fr=aladdin" target=_blank rel=noopener>Syntactic Sugar</a></p>
-<p>[5] <a href=https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584 target=_blank rel=noopener>Xuefeng Liao&rsquo;s official website-Python-Tutorial-Functional-Programming-Decorator</a></p>
-<p>[6] <a href=https://github.com/JustDoPython/python-100-day/tree/master/day-020 target=_blank rel=noopener>Python-100-days-day022</a></p>
+<p>[1] <a style=color:#18bc9d href=https://docs.python.org/3/glossary.html#term-decorator target=_blank rel=noopener>Python3 Glossary - Decorators</a></p>
+<p>[2] <a style=color:#18bc9d href=https://docs.python.org/3/reference/compound_stmts.html#function-definitions target=_blank rel=noopener>Python3 Documentation - Compound Statements - Function Definitions</a></p>
+<p>[3] <a style=color:#18bc9d href=https://docs.python.org/3/reference/compound_stmts.html#class-definitions target=_blank rel=noopener>Python3 Documentation - Compound Statements - Class Definitions</a></p>
+<p>[4] <a style=color:#18bc9d href="https://baike.baidu.com/item/%e8%af%ad%e6%b3%95%e7%b3%96/5247005?fr=aladdin" target=_blank rel=noopener>Syntactic Sugar</a></p>
+<p>[5] <a style=color:#18bc9d href=https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584 target=_blank rel=noopener>Xuefeng Liao&rsquo;s official website-Python-Tutorial-Functional-Programming-Decorator</a></p>
+<p>[6] <a style=color:#18bc9d href=https://github.com/JustDoPython/python-100-day/tree/master/day-020 target=_blank rel=noopener>Python-100-days-day022</a></p>
 </div>
 <div class=mb-3>
 <h5 class="d-inline-block mr-3">Tags:</h5>

@@ -206,8 +206,8 @@ Blog
 </blockquote>
 <p>The above is a broad definition of &ldquo;iterator&rdquo; as far as we can find.</p>
 <p>Specifically in Python, iterators are one of the built-in <strong>standard classes</strong>, and are on the same level as the &ldquo;sequences&rdquo; we&rsquo;ve studied before.</p>
-<p>For the iterator object itself, it needs to have <a href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>__iter__()</code></a> and [<code>__next__()</code>](<a href=https://docs.python.org/3/ target=_blank rel=noopener>https://docs.python.org/3/</a> library/stdtypes.html#iterator.<strong>next</strong>), which are collectively called the &ldquo;<strong>iterator protocol</strong>&rdquo;. That is, if both methods are present, the Python interpreter considers the object to be an iterator; conversely, if only one or neither method is present, the interpreter considers the object not to be an iterator.</p>
-<p>The above assertion can be verified by the following code (which requires the built-in function <code>isinstance()</code> to determine whether an object is an instance of a class; this usage is inspired by [<a href=https://www.liaoxuefeng.com/wiki/1016959663602400/1017323698112640 target=_blank rel=noopener>Xuefeng Liao&rsquo;s official website</a>]]).</p>
+<p>For the iterator object itself, it needs to have <a style=color:#18bc9d href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>__iter__()</code></a> and [<code>__next__()</code>](<a style=color:#18bc9d href=https://docs.python.org/3/ target=_blank rel=noopener>https://docs.python.org/3/</a> library/stdtypes.html#iterator.<strong>next</strong>), which are collectively called the &ldquo;<strong>iterator protocol</strong>&rdquo;. That is, if both methods are present, the Python interpreter considers the object to be an iterator; conversely, if only one or neither method is present, the interpreter considers the object not to be an iterator.</p>
+<p>The above assertion can be verified by the following code (which requires the built-in function <code>isinstance()</code> to determine whether an object is an instance of a class; this usage is inspired by [<a style=color:#18bc9d href=https://www.liaoxuefeng.com/wiki/1016959663602400/1017323698112640 target=_blank rel=noopener>Xuefeng Liao&rsquo;s official website</a>]]).</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#ff79c6>from</span> collections <span style=color:#ff79c6>import</span> Iterable, Iterator, Container
 <span style=color:#ff79c6>class</span> <span style=color:#50fa7b>bothIterAndNext</span>:
     <span style=color:#ff79c6>def</span> __iter__(self):
@@ -279,7 +279,7 @@ li_iterator2 <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-s
 <h2 id=3-implement-an-iterator-class>3 Implement an iterator class</h2>
 <hr>
 <blockquote>
-<p>The code to build the classes in this section is from [<a href="https://docs.python.org/3/tutorial/classes.html?highlight=iterator#iterators" target=_blank rel=noopener>Python3 Documentation - Classes - 9.8 Iterators</a>]</p>
+<p>The code to build the classes in this section is from [<a style=color:#18bc9d href="https://docs.python.org/3/tutorial/classes.html?highlight=iterator#iterators" target=_blank rel=noopener>Python3 Documentation - Classes - 9.8 Iterators</a>]</p>
 </blockquote>
 <p>With the above discussion in mind, we can implement a simple iterator ourselves. Just make sure that this simple iterator has a behavior that matches the definition of the iterator.</p>
 <p>In human terms: to define a data type that has a <code>__iter__()</code> method and that method returns an object with a <code>__next__()</code> method, or itself when the class already has a <code>__next__()</code> method. The sample code is as follows.</p>
@@ -311,7 +311,7 @@ li_iterator2 <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-s
 <p>Mission accomplished!</p>
 <h2 id=4-for-statements-and-iterators>4 <code>for</code> statements and iterators</h2>
 <hr>
-<p>Going back to the <code>for</code> loop example we used as an introduction at the beginning of the article, Python actually silently calls the built-in function <a href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>iter()</code></a> when executing the <code>for</code> statement, and passes in the container object from the <code>for</code> statement as an argument; and the function <a href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>iter()</code></a> returns an iterator object. statement; and the function <a href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>iter()</code></a> returns an iterator object.</p>
+<p>Going back to the <code>for</code> loop example we used as an introduction at the beginning of the article, Python actually silently calls the built-in function <a style=color:#18bc9d href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>iter()</code></a> when executing the <code>for</code> statement, and passes in the container object from the <code>for</code> statement as an argument; and the function <a style=color:#18bc9d href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>iter()</code></a> returns an iterator object. statement; and the function <a style=color:#18bc9d href=https://docs.python.org/3/library/functions.html#iter target=_blank rel=noopener><code>iter()</code></a> returns an iterator object.</p>
 <p>Thus, the <code>for</code> statement is called after converting the container object to an iterator object, and the <code>__next__()</code> method is called, accessing each object in the original container one by one until all elements have been traversed, throwing a <code>StopIteration</code> exception, and terminating the <code>for</code> loop.</p>
 <h2 id=5-summary>5 Summary</h2>
 <hr>
@@ -325,10 +325,10 @@ li_iterator2 <span style=color:#ff79c6>=</span> <span style=color:#8be9fd;font-s
 <p>This article explores iterators in Python, gaining an in-depth understanding of their properties and behavior, and learning two important methods, <code>__iter__()</code> and <code>__next__()</code>. Also figured out the internal mechanism of Python&rsquo;s implementation of <code>for</code> loops.</p>
 <hr>
 <p>Reference</p>
-<p>[1] <a href=https://docs.python.org/3/library/stdtypes.html target=_blank rel=noopener>Python3 documentation - built-in types</a></p>
-<p>[2] <a href=https://www.liaoxuefeng.com/wiki/1016959663602400/1017323698112640 target=_blank rel=noopener>Liao Xuefeng&rsquo;s official website</a></p>
-<p>[3] <a href="https://docs.python.org/3/tutorial/classes.html?highlight=iterator#iterators" target=_blank rel=noopener>Python3 Documentation - Classes - 9.8 Iterators</a></p>
-<p>[4] <a href=https://github.com/JustDoPython/python-100-day/tree/master/day-019 target=_blank rel=noopener>Python-100-days-day019</a></p>
+<p>[1] <a style=color:#18bc9d href=https://docs.python.org/3/library/stdtypes.html target=_blank rel=noopener>Python3 documentation - built-in types</a></p>
+<p>[2] <a style=color:#18bc9d href=https://www.liaoxuefeng.com/wiki/1016959663602400/1017323698112640 target=_blank rel=noopener>Liao Xuefeng&rsquo;s official website</a></p>
+<p>[3] <a style=color:#18bc9d href="https://docs.python.org/3/tutorial/classes.html?highlight=iterator#iterators" target=_blank rel=noopener>Python3 Documentation - Classes - 9.8 Iterators</a></p>
+<p>[4] <a style=color:#18bc9d href=https://github.com/JustDoPython/python-100-day/tree/master/day-019 target=_blank rel=noopener>Python-100-days-day019</a></p>
 </div>
 <div class=mb-3>
 <h5 class="d-inline-block mr-3">Tags:</h5>

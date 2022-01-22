@@ -186,13 +186,13 @@ Blog
 <h3 id=11-built-in-function-id>1.1 Built-in function <code>id()</code></h3>
 <p><strong><code>id(object)</code></strong></p>
 <blockquote>
-<p>This is an integer which is guaranteed to be unique and constant for this object during its Two objects with non-overlapping lifetimes may have the same [<code>id()</code>](<a href=https://docs.python.org/3.7/library/functions.html?highlight target=_blank rel=noopener>https://docs.python.org/3.7/library/functions.html?highlight</a> =id#id) value.</p>
+<p>This is an integer which is guaranteed to be unique and constant for this object during its Two objects with non-overlapping lifetimes may have the same [<code>id()</code>](<a style=color:#18bc9d href=https://docs.python.org/3.7/library/functions.html?highlight target=_blank rel=noopener>https://docs.python.org/3.7/library/functions.html?highlight</a> =id#id) value.</p>
 <p>The return value is the &ldquo;identifier&rdquo; of the incoming object. This identifier is a unique constant that corresponds to the incoming object during its lifetime. Two objects whose lifecycles do not overlap may have the same <code>id()</code> return value.</p>
 </blockquote>
 <blockquote>
 <p><strong>CPython implementation detail:</strong> This is the address of the object in memory.</p>
 <p>CPython implementation detail: &ldquo;identity&rdquo; is actually the address of the object in memory.</p>
-<p>&ndash; quoted from &ldquo;<a href="https://docs.python.org/3.7/library/functions.html?highlight=id#id" target=_blank rel=noopener>Python 3.7.4 Documentation-Built-In-Functions-id()</a></p>
+<p>&ndash; quoted from &ldquo;<a style=color:#18bc9d href="https://docs.python.org/3.7/library/functions.html?highlight=id#id" target=_blank rel=noopener>Python 3.7.4 Documentation-Built-In-Functions-id()</a></p>
 </blockquote>
 <p>In other words, an object&rsquo;s <code>id</code> can be treated as its virtual memory address, regardless of whether it is a CPython implementation or not.</p>
 <h3 id=12-the-operator-is>1.2 The operator <code>is</code></h3>
@@ -212,16 +212,16 @@ Blog
 </table>
 <blockquote>
 <p>i.e., the role of <code>is</code> is to compare the identity of objects.
-&ndash; quoted from &ldquo;<a href=https://docs.python.org/3/library/stdtypes.html target=_blank rel=noopener>Python 3.7.4 Documentation-Built-In Types</a></p>
+&ndash; quoted from &ldquo;<a style=color:#18bc9d href=https://docs.python.org/3/library/stdtypes.html target=_blank rel=noopener>Python 3.7.4 Documentation-Built-In Types</a></p>
 </blockquote>
 <h3 id=13-sys-module-function-getrefcount-function>1.3 <code>sys</code> module function <code>getrefcount()</code> function</h3>
 <p><strong><code>sys.getrefcount(object)</code></strong></p>
 <blockquote>
-<p>Return the reference count of the <em>object</em>. The count returned is generally one higher than you might expect, because it includes the (temporary) reference as an argument to <a href=https://docs.python.org/3.7/library/sys.html#sys.getrefcount target=_blank rel=noopener><code>getrefcount()</code></a>.</p>
+<p>Return the reference count of the <em>object</em>. The count returned is generally one higher than you might expect, because it includes the (temporary) reference as an argument to <a style=color:#18bc9d href=https://docs.python.org/3.7/library/sys.html#sys.getrefcount target=_blank rel=noopener><code>getrefcount()</code></a>.</p>
 <p>The return value is the reference count of the passed-in object. Since a temporary reference is generated when <code>getrefcount()</code> is passed as an argument, the returned count value is generally 1 more than expected.</p>
-<p>&ndash; Cited in [Python 3.7.4 Documentation - sys Module - System-Related Parameters and Functions](<a href=https://docs.python.org/3.7/library/sys target=_blank rel=noopener>https://docs.python.org/3.7/library/sys</a>. html#sys.getrefcount)</p>
+<p>&ndash; Cited in [Python 3.7.4 Documentation - sys Module - System-Related Parameters and Functions](<a style=color:#18bc9d href=https://docs.python.org/3.7/library/sys target=_blank rel=noopener>https://docs.python.org/3.7/library/sys</a>. html#sys.getrefcount)</p>
 </blockquote>
-<p>The &ldquo;reference count&rdquo; in this case is defined in the <a href="https://docs.python.org/3.7/glossary.html?highlight=getrefcount" target=_blank rel=noopener>Python documentation</a> as &ldquo;the number of times an object referenced&rdquo;. Once the reference count goes to zero, the memory where the object is located is freed. This is a mechanism for automatic memory management within Python.</p>
+<p>The &ldquo;reference count&rdquo; in this case is defined in the <a style=color:#18bc9d href="https://docs.python.org/3.7/glossary.html?highlight=getrefcount" target=_blank rel=noopener>Python documentation</a> as &ldquo;the number of times an object referenced&rdquo;. Once the reference count goes to zero, the memory where the object is located is freed. This is a mechanism for automatic memory management within Python.</p>
 <h2 id=2-example-questions>2. Example questions</h2>
 <hr>
 <p>In C, a variable represents a fixed piece of memory, and the value assigned to it is the data that exists at that address; in Python, however, a variable is no longer a fixed address, but rather a label attached to each object in Python. Understanding this is important for understanding many of Python&rsquo;s features.</p>
@@ -349,7 +349,7 @@ list_same_ref
 <p>That is, operations on the variables themselves do not create new objects, but directly change the value of the original object.</p>
 <h3 id=23-a-special-place>2.3 A special place</h3>
 <blockquote>
-<p>This subsection example is inspired by [<a href=https://www.cnblogs.com/yuyan/archive/2012/04/21/2461673.html target=_blank rel=noopener>About references in Python</a>]</p>
+<p>This subsection example is inspired by [<a style=color:#18bc9d href=https://www.cnblogs.com/yuyan/archive/2012/04/21/2461673.html target=_blank rel=noopener>About references in Python</a>]</p>
 </blockquote>
 <p>There is also a special difference between numeric data and lists. Consider the following code.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python>num <span style=color:#ff79c6>=</span> <span style=color:#bd93f9>10000</span>
@@ -397,12 +397,12 @@ getrefcount(<span style=color:#bd93f9>10000</span>)
 <p>Through such exploration, the profound meaning of &ldquo;everything is an object&rdquo; can also be understood more vividly. 0</p>
 <h2 id=5-references>5. References</h2>
 <hr>
-<p><a href="https://docs.python.org/3.7/library/functions.html?highlight=id#id" target=_blank rel=noopener>Python 3.7.4 Documentation-Built-In Functions-id()</a></p>
-<p><a href=https://docs.python.org/3/library/stdtypes.html target=_blank rel=noopener>Python 3.7.4 Documentation - Built-in Types</a></p>
-<p><a href=https://docs.python.org/3.7/library/sys.html#sys.getrefcount target=_blank rel=noopener>Python 3.7.4 Documentation - sys module - system related parameters and functions</a></p>
-<p><a href="https://docs.python.org/3.7/glossary.html?highlight=getrefcount" target=_blank rel=noopener>Python 3.7.4 Documentation - Glossary</a></p>
-<p><a href=https://www.cnblogs.com/yuyan/archive/2012/04/21/2461673.html target=_blank rel=noopener>About references in Python</a></p>
-<p><a href=https://github.com/JustDoPython/python-100-day/tree/master/day-012 target=_blank rel=noopener>Python-100-days-day012</a></p>
+<p><a style=color:#18bc9d href="https://docs.python.org/3.7/library/functions.html?highlight=id#id" target=_blank rel=noopener>Python 3.7.4 Documentation-Built-In Functions-id()</a></p>
+<p><a style=color:#18bc9d href=https://docs.python.org/3/library/stdtypes.html target=_blank rel=noopener>Python 3.7.4 Documentation - Built-in Types</a></p>
+<p><a style=color:#18bc9d href=https://docs.python.org/3.7/library/sys.html#sys.getrefcount target=_blank rel=noopener>Python 3.7.4 Documentation - sys module - system related parameters and functions</a></p>
+<p><a style=color:#18bc9d href="https://docs.python.org/3.7/glossary.html?highlight=getrefcount" target=_blank rel=noopener>Python 3.7.4 Documentation - Glossary</a></p>
+<p><a style=color:#18bc9d href=https://www.cnblogs.com/yuyan/archive/2012/04/21/2461673.html target=_blank rel=noopener>About references in Python</a></p>
+<p><a style=color:#18bc9d href=https://github.com/JustDoPython/python-100-day/tree/master/day-012 target=_blank rel=noopener>Python-100-days-day012</a></p>
 </div>
 <div class=mb-3>
 <h5 class="d-inline-block mr-3">Tags:</h5>
